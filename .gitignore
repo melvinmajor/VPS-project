@@ -1,0 +1,7 @@
+# Git ignore of ThermoPIC Project
+# See repository at https://github.com/melvinmajor/VPS-project
+# ============================================================
+
+# Documents and useless files
+thumbs.db
+\.DS_Store

@@ -1,3 +1,3 @@
 FROM scratch
-ADD hello /
+ADD ./Hello 
 CMD ["/hello"]

@@ -2,6 +2,8 @@
 
 1st project of the academic year for the lesson of Systems & Networks Administration, 2nd Bachelor at EPHEC Louvain-la-Neuve
 
+Docker Hub repository : [vps-project Docker Hub repository](https://cloud.docker.com/repository/docker/melvinmajor/vps-project/)
+
 ## Our Team
 
 Our grup number is _**13**_

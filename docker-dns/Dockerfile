@@ -1,3 +1,3 @@
-FROM scratch
-ADD ./Hello 
-CMD ["/hello"]
+FROM alpine
+
+CMD ["echo", "hello world"]

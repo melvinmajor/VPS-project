@@ -1,0 +1,17 @@
+$TTL    604800
+$ORIGIN wt13.ephec-ti.be.
+@       IN      SOA     ns1.wt13.ephec-ti.be. root.wt13.ephec-ti.be. (
+                              3         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+
+@		      IN		  NS		      ns1.wt13.ephec-ti.be.   ; Serveur dns externe
+@		      IN		  NS		      ns2.wt13.ephec-ti.be.   ; Serveur dns interne
+ns1		    IN		  A		        51.77.203.41
+ns2		    IN		  A		        51.77.203.49
+serverWeb IN      A           51.77.203.41
+b2b		    IN		  CNAME		    serverWeb
+www       IN      CNAME       serverWeb
+intranet  IN      CNAME       serverWeb

@@ -1,7 +1,5 @@
 FROM sameersbn/bind
 
-RUN apt-get update && apt-get install -y bind9
-
 # Placer les configurations des sites
 ADD configuration/named.conf /etc/bind/
 ADD configuration/named.conf.local /etc/bind/

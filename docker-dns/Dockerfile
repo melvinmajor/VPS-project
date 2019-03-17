@@ -1,7 +1,10 @@
-FROM sameersbn/bind
+FROM ubuntu:16.04
 
-# Placer les configurations des sites
-ADD configuration/named.conf /etc/bind/
-ADD configuration/named.conf.local /etc/bind/
-ADD configuration/db.wt13.ephec-ti.be.direct /etc/bind/
-ADD configuration/db.wt13.ephec-ti.be.reverse /etc/bind/
+RUN apt-get update && apt-get install -y bind9
+
+WORKDIR /etc/bind
+
+VOLUME /etc/bind
+
+EXPOSE 53 53/udp
+CMD ["/usr/sbin/named", "-g", "-c", "/etc/bind/named.conf", "-u", "bind"]

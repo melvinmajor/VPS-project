@@ -1,5 +1,5 @@
 $TTL    604800
-$ORIGIN 49.203.77.51.in-addr.arpa.
+$ORIGIN 203.77.51.in-addr.arpa.
 @       IN      SOA     ns1.wt13.ephec-ti.be. guillaume-vdh.skynet.be. (
                               3         ; Serial
                          604800         ; Refresh

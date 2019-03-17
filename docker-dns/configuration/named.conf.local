@@ -1,23 +1,10 @@
-acl internals {
-    51.77.203.44;
-    51.77.203.49;
-    localhost;
+zone "wt13.ephec-ti.be" {
+		type master; 						#signifie que ce serveur est le serveur maître
+		file "/etc/bind/zones/db.wt13.ephec-ti.be.direct"; 	#zone file path
+		allow-transfer{51.77.203.49}; 				#adresse du serveur esclave
 };
 
-view internal {
-    match-clients { internals; };
-    recursion yes;
-    allow-recursion { internals; };
-    zone "wt13.ephec-ti.be" {
-        type master;
-        file "/etc/bind/db.internal.wt3.ephec-ti.be";
-    };
-};
-
-view external {
-    match-clients { any; };
-    zone "wt13.ephec-ti.be" {
-        type master;
-        file "/etc/bind/db.wt13.ephec-ti.be";
-    };
-};
+zone "203.77.51.in-addr.arpa."{
+	type master;
+	file "/etc/bind/db.wt13.ephec-ti.be.reverse";
+};	

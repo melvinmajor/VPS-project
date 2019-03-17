@@ -1,0 +1,5 @@
+zone "wt13.ephec-ti.be" {
+		type slave; 									#signifie que ce serveur est le serveur esclave
+		file "/var/cache/bind/db.wt13.ephec-ti.be"; 	#zone file path
+		master{51.77.203.41}; 					#adresse du serveur esclave
+	};	

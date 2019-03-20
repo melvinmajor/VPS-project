@@ -35,16 +35,18 @@ footer {
   text-align: center;
   box-shadow: 19px 0 38px rgba(0,0,0,0.30), 15px 0 12px rgba(0,0,0,0.22);
 }
-.boxIntro {
+.boxIntro, .www, .intra, .b2b {
   background-color: white;
   margin: 10px auto;
   padding: 1px 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   color: #263238;
-  width: 175px;
   text-align: center;
   border-radius: 30px;
 }
+.www { width: 425px; }
+.intra { width: 175px; }
+.b2b { width: 225px; }
 .boxContent {
   background-color: white;
   margin: 10px auto;

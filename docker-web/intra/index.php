@@ -3,11 +3,11 @@
   <head>
     <title>WT Intranet - Home</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
   <body>
     <h1>WoodyToys Intranet</h1>
-    <div class=boxIntro>
+    <div class=intra>
     <h2>ERP Web tools</h2>
     </div>
     <div class=boxContent>

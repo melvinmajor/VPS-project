@@ -3,11 +3,11 @@
   <head>
     <title>WT B2B - Home</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
   <body>
     <h1>WoodyToys Reseller</h1>
-    <div class=boxIntro>
+    <div class=b2b>
       <h2>B2B member portal</h2>
     </div>
     <div class=boxContent>

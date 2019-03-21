@@ -6,11 +6,11 @@ author:
     - Guillaume Vanden Herrewegen
     - Hubert Van De Walle
 date: 14 mars 2019
-titlepage: true
+titlepage: false
 titlepage-rule-color: "ff5722"
 footer-left: Melvin, Guillaume, Hubert - Groupe 13
 titlepage-rule-height: 6
-toc: true
+toc: false
 toc-own-page: true
 listing: false
 toc-title: Analyse de sécurité n°1
@@ -20,7 +20,18 @@ toc-title: Analyse de sécurité n°1
 
 ## Risques encourus
 
-Les risques encourus étaient le piratage de nos VPS.
+Ils existent de nombreux risques.
+Les principaux risques portent sur la confidentialité, la disponibilité et l'intégrité.
+Voici quelques-un des risques auxquels nous pouvons être exposé et donc par la suite, pouvoir nous en protéger.
+
+- Infiltration dans nos VPS,
+- Attaque de type dos (denial-of-service attack),
+- Fishing,
+- Authentification par Brutforce,
+- Sniffing de données,
+
+Nos services doivent aussi être opérationnels 24 heures sur 24. Ce qui veut dire que nos serveurs doivent être à tous prix protégés de tout type de problème physique, aussi bien une panne électrique qu'une panne du matériel. 
+
 
 ### Par le VPS
 
@@ -47,8 +58,6 @@ Nous comptons mettre en place "Fail2Ban" incessamment sous peu.
 
 Aucun risque encouru pour les services étant donné qu'à l'heure actuelle, il n'y a aucun service réellement mis en place.
 Les seuls services mis en place sont à l'heure actuel désactivé.
-
-## Risques encourus
 
 ### Par chacun des services déployés
 

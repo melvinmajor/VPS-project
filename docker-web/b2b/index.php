@@ -3,7 +3,8 @@
   <head>
     <title>WT B2B - Home</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <h1>WoodyToys Reseller</h1>

@@ -6,7 +6,7 @@ Docker Hub repository : [vps-project Docker Hub repository](https://cloud.docker
 
 ## Our Team
 
-Our grup number is _**13**_
+Our group number is _**13**_
 
 Our team is composed of 3 people:
 
@@ -18,4 +18,4 @@ Our team is composed of 3 people:
 
 This project consists on 3 modules: Web - DNS, Mail, VoIP.
 
-It's asked to relate everything with a VPS and Docker.
+It's asked to relate everything with 3 VPS, all running Ubuntu, and Docker.

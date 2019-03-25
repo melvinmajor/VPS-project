@@ -1,3 +1,6 @@
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/melvinmajor/vps-project.svg?label=DockerHub%20build&logo=docker&style=popout-square)](https://cloud.docker.com/repository/docker/melvinmajor/vps-project/)
+[![Docker Automated build](https://img.shields.io/docker/automated/melvinmajor/vps-project.svg?label=DockerHub%20automated%20build&logo=docker&style=popout-square&color=informational)](https://cloud.docker.com/repository/docker/melvinmajor/vps-project/)
+
 # VPS project
 
 1st project of the academic year for the lesson of Systems & Networks Administration, 2nd Bachelor at EPHEC Louvain-la-Neuve

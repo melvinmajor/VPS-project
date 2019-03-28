@@ -5,13 +5,13 @@ author:
     - Melvin Campos Casares
     - Guillaume Vanden Herrewegen
     - Hubert Van De Walle
-date: 27 mars 2019
-titlepage: false
+date: 14 mars 2019
+titlepage: true
 titlepage-rule-color: "4fc3f7"
 footer-left: Melvin, Guillaume, Hubert - Groupe 13
 titlepage-rule-height: 6
-toc: false
-toc-own-page: false
+toc: true
+toc-own-page: true
 listing: false
 toc-title: Rapport client
 ---
@@ -29,7 +29,6 @@ Dans le cadre de la mise en place de l'infrastructure réseau de l'entreprise Wo
 ## Services internes
 
 Il est demandé d'offrir l'accès Internet sur les postes de travail fixes et mobiles des employés tout comme l'accès aux différents services internes (comme l'ERP) sans se reposer sur le fournisseur d'accès ni les fournisseurs extérieurs.
-*Concrètement, il nous est demandé d'utiliser notre propre DNS afin de ne pas dépendre du fournisseur d'accès ou fournisseur extérieur afin d'accéder à Internet et aux différents services internes (comme l'ERP).*
 
 Un contrôle de traffic Web généré par les employés est une préférence.
 
@@ -37,20 +36,16 @@ Il y a un certain intérêt pour la gestion des identités des employés pour l'
 
 ## Web
 
-La vente des produits s'effectue avec les revendeurs *via une plateforme accessible en ligne, expliqué un peu plus loin.*
+La vente des produits s'effectue avec les revendeurs.
 
 La gestion des contacts clients, commandes, stocks et l'organisation de la prodution est basée sur un outil ERP web accessible uniquement en interne.
-*Il s'agit donc d'un Intranet, accessible que dans l'enceinte du réseau de l'entreprise.*
-
-*La différence entre le site internet pour les revendeurs et l'outil ERP est que l'outil ERP n'est disponible qu'en interne et uniquement que par les employés de l'entreprise WoodyToys alors que le site pour les revendeurs est accessible publiquement et ne donne accès qu'à un catalogue et un moyen de commande.
-L'outil ERP permet donc de voir, faire et gérer bien plus de choses que le site pour les revendeurs.*
 
 Un portail Web présentant les produits (www.woodytoys.be) et un site de vente en ligne réservé aux revendeurs (b2b.woodytoys.be) sont disponible publiquement.
 
 **Le code source des 3 sites est pré-existant :**
 
 - Le site vitrine est un site statique en HTML/CSS,
-- Le site de vente en ligne *pour les revendeurs (b2b)* et l'ERP *(intranet)* sont des sites dynamiques en PHP/MySQL.
+- Le site de vente en ligne et l'ERP sont des sites dynamiques en PHP/MySQL.
 
 ## Mail
 
@@ -106,27 +101,15 @@ Tout le prototype reposera sur l'utilisation de Docker permettant un déploiemen
 
 ## DNS et accès web interne
 
-Un service DNS *interne et externe est en cours de finalisation.
-Ce service est développé sur `Bind9` et devrais être achevé dans les prochains jours.*
+Un service DNS est en train d'être mis en place. Ce service sera développé grâce à Bind9.
 
-*Même si `Bind9` existe depuis un certain temps et que d'autres alternatives plus récentes et, par conséquent, plus performantes existent, il reste très largement utilisé.
-De plus, de par sa popularité, il profite encore aujourd'hui de nombreuses mises à jour de sécurité ainsi que d'une documentation variée et complète.*
+## DNS externe
 
 ## Web
 
-Le déploiement et la configuration des services nécessaires pour l'hébergement *est en cours de développement.*
-
-*Nous avons choisi `nginx` pour les performances qu'il offre en comparaison d'`apache`.
-Nous pensions utiliser au préalable `lighttpd` mais par soucis de facilité, nous avons pris la décision de nous reposer sur `nginx` étant donné qu'il est plus répandu et connu.*
-
-*A l'heure actuelle, les sites internets sont accessible en ligne sur notre plateforme de test, à l'adresse suivante : `51.77.203.41`*
+Le déploiement et la configuration des services nécessaires pour l'hébergement est prévu.
 
 ## Mail
-
-*Concernant la partie mail, ce point est en cours de réflexion.
-Nous pensions utiliser `Postfix`, étant donné qu'il s'agit du système de server mail répandu et bien connu de tous.*
-
-*`Postfix` n'est certes pas dès plus récents mais on profite, tout comme pour Bind9, d'une documentation complète.*
 
 ## VoIP
 

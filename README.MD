@@ -22,3 +22,9 @@ Our team is composed of 3 people:
 This project consists on 3 modules: Web - DNS, Mail, VoIP.
 
 It's asked to relate everything with 3 VPS, all running Ubuntu, and Docker.
+
+## Status
+
+- The DNS part is in good working conditions.
+- The Web part still needs some improvements but is already partly working.
+- The Mail part is the next stage.

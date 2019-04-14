@@ -1,24 +1,33 @@
-# Dockerfile for lighttpd
+FROM ubuntu:18.04
 
-FROM alpine
+# avoid timesone prompt
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apk add --update --no-cache \
-	lighttpd \
-	lighttpd-mod_auth \
-	php7-fpm \
-        php7-cgi \
-        php7 \
-  && rm -rf /var/cache/apk/*
+# install stuff
+RUN apt-get update
+RUN apt-get -y install php-cgi php lighttpd
 
-COPY etc/lighttpd/* /etc/lighttpd/
-COPY etc/lighttpd/vhosts.d/* /etc/lighttpd/vhosts.d/
-RUN mkdir -p /srv/htdocs/b2b.local/
+# set permissions
+RUN chmod -R 777 /var/log/lighttpd && chmod -R 777 /var/cache/lighttpd
+
+# add lighttpd group and user
+RUN groupadd -g 208 lighttpd && useradd -u 208 -g lighttpd -d /var/www lighttpd
+
+# copy lighttpd config
+COPY lighttpd/ /etc/lighttpd/
+
+# copy www website
 RUN mkdir -p /srv/htdocs/www.local/
+COPY www/ /srv/htdocs/www.local/
+
+# copy b2b website
+RUN mkdir -p /srv/htdocs/b2b.local/
+COPY b2b/ /srv/htdocs/b2b.local/
+
+# copy intra website
 RUN mkdir -p /srv/htdocs/intra.local/
-COPY site1/ /srv/htdocs/b2b.local/
-COPY site2/ /srv/htdocs/www.local/
-COPY start.sh /usr/local/bin/
+COPY intra/ /srv/htdocs/b2b.local/
 
 EXPOSE 80
 
-CMD ["start.sh"]
+CMD ["lighttpd", "-D", "-f",  "/etc/lighttpd/lighttpd.conf"]

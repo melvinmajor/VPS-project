@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-# avoid timesone prompt
+# avoid timezone prompt
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install stuff

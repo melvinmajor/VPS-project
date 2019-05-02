@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Main things to do with Aptitude
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y build-essential libxml2-dev libncurses5-dev linux-headers-`uname -r` libsqlite3-dev libssl-dev wget
+RUN apt-get install -y build-essential libxml2-dev libncurses5-dev linux-headers-`uname -r` libsqlite3-dev libssl-dev uuid-dev libjansson-dev wget
 
 # Preparation, installation and configuration for Asterisk
 RUN mkdir /usr/src/asterisk && \
@@ -27,4 +27,4 @@ RUN mkdir /usr/src/asterisk && \
 # COPY config/http.conf /etc/asterisk/http.conf
 
 RUN /etc/init.d/asterisk restart
-CMD ["asterisk", "-cvvr"]
+CMD ["asterisk", "vvvvvvc"]

@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Main things to do with Aptitude
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y build-essential libxml2-dev libncurses5-dev linux-headers-`uname -r` libsqlite3-dev libssl-dev uuid-dev libjansson-dev wget
+RUN apt-get install -y build-essential libxml2-dev libncurses5-dev libsqlite3-dev libssl-dev uuid-dev libjansson-dev wget
+# linux-headers-$(unamre -r)
 
 # Preparation, installation and configuration for Asterisk
 RUN mkdir /usr/src/asterisk && \
@@ -20,11 +21,21 @@ RUN mkdir /usr/src/asterisk && \
       --enable MOH-OPSOUND-ULAW \
       --enable EXTRA-SOUNDS-FR-ULAW \
   make menuselect.makeopts && \
-  make && make install && make samples && make config
+  make && make install && make samples && make config && make install-logrotate
 
-# import configuration files
-# COPY config/manager.conf /etc/asterisk/manager.conf
-# COPY config/http.conf /etc/asterisk/http.conf
+# Fail2ban integration
+RUN apt-get install -y fail2ban
+RUN rm /etc/fail2ban/filter.d/asterisk.conf
+COPY config/fail2ban/filter.d/asterisk*.conf /etc/fail2ban/filter.d/
+COPY config/fail2ban/jail.conf /etc/fail2ban/jail.conf
 
-RUN /etc/init.d/asterisk restart
-CMD ["asterisk", "vvvvvvc"]
+# Cleaning stuff
+RUN apt-get remove --purge -y $BUILD_PACKAGES && \
+  apt-get -y autoremove && \
+  apt-get -y clean
+
+# Start Asterisk and Fail2ban services
+RUN rm /var/run/fail2ban/fail2ban.sock || true
+CMD ["service", "fail2ban", "restart"]
+CMD ["asterisk", "start"]
+CMD ["asterisk", "-vvvvvv"]

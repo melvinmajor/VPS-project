@@ -21,9 +21,11 @@ RUN mkdir /usr/src/asterisk && \
       --enable EXTRA-SOUNDS-FR-ULAW \
   make menuselect.makeopts && \
   make && make install && make samples && make config && make install-logrotate
+CMD ["asterisk", "stop"]
 COPY config/sip.conf /etc/asterisk/sip.conf
 COPY config/users.conf /etc/asterisk/users.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
+COPY config/rtp.conf /etc/asterisk/rtp.conf
 
 # Fail2ban integration
 RUN apt-get install -y fail2ban
@@ -38,7 +40,7 @@ RUN apt-get remove --purge -y $BUILD_PACKAGES && \
 
 # Expose ports for connectivity and audio channel
 EXPOSE 5060/udp
-EXPOSE 10000/udp
+EXPOSE 10000-15000/udp
 
 # Start Asterisk and Fail2ban services
 RUN rm /var/run/fail2ban/fail2ban.sock || true

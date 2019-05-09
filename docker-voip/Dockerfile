@@ -33,14 +33,14 @@ RUN rm /etc/fail2ban/filter.d/asterisk.conf
 COPY config/fail2ban/filter.d/asterisk*.conf /etc/fail2ban/filter.d/
 COPY config/fail2ban/jail.conf /etc/fail2ban/jail.conf
 
-# Cleaning stuff
-RUN apt-get remove --purge -y $BUILD_PACKAGES && \
+# Cleaning stuff - $BUILD_PACKAGES
+RUN apt-get remove --purge -y && \
   apt-get -y autoremove && \
   apt-get -y clean
 
 # Expose ports for connectivity and audio channel
 EXPOSE 5060/udp
-EXPOSE 10000-15000/udp
+EXPOSE 10000-10050/udp
 
 # Start Asterisk and Fail2ban services
 RUN rm /var/run/fail2ban/fail2ban.sock || true

@@ -40,10 +40,10 @@ RUN apt-get remove --purge -y && \
 
 # Expose ports for connectivity and audio channel
 EXPOSE 5060/udp
-EXPOSE 10000-10050/udp
+EXPOSE 10000-10060/udp
 
 # Start Asterisk and Fail2ban services
 RUN rm /var/run/fail2ban/fail2ban.sock || true
 CMD ["service", "fail2ban", "restart"]
 CMD ["asterisk", "reload"]
-CMD ["asterisk", "-fvvvvvv"]
+CMD ["asterisk", "-f"]

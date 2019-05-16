@@ -27,12 +27,6 @@ COPY config/users.conf /etc/asterisk/users.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/rtp.conf /etc/asterisk/rtp.conf
 
-# Fail2ban integration
-RUN apt-get install -y fail2ban
-RUN rm /etc/fail2ban/filter.d/asterisk.conf
-COPY config/fail2ban/filter.d/asterisk*.conf /etc/fail2ban/filter.d/
-COPY config/fail2ban/jail.conf /etc/fail2ban/jail.conf
-
 # Cleaning stuff - $BUILD_PACKAGES
 RUN apt-get remove --purge -y && \
   apt-get -y autoremove && \
@@ -43,7 +37,5 @@ EXPOSE 5060/udp
 EXPOSE 10000-10060/udp
 
 # Start Asterisk and Fail2ban services
-RUN rm /var/run/fail2ban/fail2ban.sock || true
-CMD ["service", "fail2ban", "restart"]
 CMD ["asterisk", "reload"]
 CMD ["asterisk", "-f"]

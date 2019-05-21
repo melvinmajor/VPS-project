@@ -26,6 +26,7 @@ COPY config/sip.conf /etc/asterisk/sip.conf
 COPY config/users.conf /etc/asterisk/users.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/rtp.conf /etc/asterisk/rtp.conf
+COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 
 # Cleaning stuff - $BUILD_PACKAGES
 RUN apt-get remove --purge -y && \

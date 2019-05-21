@@ -35,7 +35,7 @@ footer {
   text-align: center;
   box-shadow: 19px 0 38px rgba(0,0,0,0.30), 15px 0 12px rgba(0,0,0,0.22);
 }
-.boxIntro, .www, .intra, .b2b {
+.boxIntro, .www {
   background-color: white;
   margin: 10px auto;
   padding: 1px 20px;
@@ -45,8 +45,6 @@ footer {
   border-radius: 30px;
 }
 .www { width: 425px; }
-.intra { width: 175px; }
-.b2b { width: 225px; }
 .boxContent {
   background-color: white;
   margin: 10px auto;

@@ -13,9 +13,9 @@ $TTL	43200
 
 
 ; name servers - A record
-ns 				    IN	A		51.77.203.49
+ns 				    IN	A		51.77.203.41
 
 ; web services
-serverWeb			IN	A		51.77.203.49
+serverWeb			IN	A		51.77.203.41
 www				    IN	CNAME	 	serverWeb
 b2b IN CNAME serverWeb

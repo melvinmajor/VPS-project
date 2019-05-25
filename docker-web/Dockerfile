@@ -33,14 +33,14 @@ RUN mkdir -p /srv/htdocs/intra.local/
 COPY intra/ /srv/htdocs/intra.local/
 
 # create let's encrypt certificate
-RUN certbot certonly --webroot -w /srv/htdocs/www.local -d www.wt13.ephec-ti.be
-RUN certbot certonly --webroot -w /srv/htdocs/b2b.local -d b2b.wt13.ephec-ti.be
-RUN certbot certonly --webroot -w /srv/htdocs/intra.local -d intranet.wt13.ephec-ti.be
-
-# combine certificate and private key in one file
 RUN certbot certonly --webroot -w /srv/htdocs/www.local -d www.wt13.ephec-ti.be --email m.camposcasares@students.ephec.be --agree-tos --non-interactive
 RUN certbot certonly --webroot -w /srv/htdocs/b2b.local -d b2b.wt13.ephec-ti.be --email m.camposcasares@students.ephec.be --agree-tos --non-interactive
 RUN certbot certonly --webroot -w /srv/htdocs/intra.local -d intranet.wt13.ephec-ti.be --email m.camposcasares@students.ephec.be --agree-tos --non-interactive
+
+# combine certificate and private key in one file
+RUN cat /etc/letsencrypt/live/www.wt13.ephec-ti.be/cert.pem /etc/letsencrypt/live/www.wt13.ephec-ti.be/privkey.pem > /etc/letsencrypt/live/www.wt13.ephec-ti.be/web.pem
+RUN cat /etc/letsencrypt/live/b2b.wt13.ephec-ti.be/cert.pem /etc/letsencrypt/live/b2b.wt13.ephec-ti.be/privkey.pem > /etc/letsencrypt/live/b2b.wt13.ephec-ti.be/web.pem
+RUN cat /etc/letsencrypt/live/intranet.wt13.ephec-ti.be/cert.pem /etc/letsencrypt/live/intranet.wt13.ephec-ti.be/privkey.pem > /etc/letsencrypt/live/intranet.wt13.ephec-ti.be/web.pem
 
 # restart lighttpd service to match certificate
 CMD ["service", "lighttpd", "restart"]

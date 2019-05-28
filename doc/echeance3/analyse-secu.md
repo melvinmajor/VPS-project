@@ -1,11 +1,11 @@
 ---
-title: WoodyToys - Analyse de sécurité n°2
+title: WoodyToys - Analyse de sécurité n°3
 subtitle: EPHEC - Groupe 13
 author: 
     - Melvin Campos Casares
     - Guillaume Vanden Herrewegen
     - Hubert Van De Walle
-date: 27 mars 2019
+date: 16 mai 2019
 titlepage: false
 titlepage-rule-color: "ff5722"
 footer-left: Melvin, Guillaume, Hubert - Groupe 13
@@ -13,7 +13,7 @@ titlepage-rule-height: 6
 toc: false
 toc-own-page: false
 listing: false
-toc-title: Analyse de sécurité n°2
+toc-title: Analyse de sécurité n°3
 ---
 
 # VPS & Docker
@@ -57,9 +57,28 @@ De plus, la protection contre l'attaque DDOS et la récidive est également suiv
 
 ### Par chacun des services déployés
 
+#### Service WEB
+
+Afin de garantir une sécurité au niveau de notre infrastructure web, nous sommes en train d'introduire un certificat SSL pour que notre site web soit sécurisé mais soit également crédible au niveau du client.
+
+#### Service MAIL
+
+Le service mail étant encore en cours de développement, aucune protection n'a encore été mise en place. Cependant, nous envisageons d'introduire des sécurités afin de protéger le service contre tout type de spam. 
+
+#### Service VOIP
+
+Nous avons ajouté pour le VOIP une protection supplémentaire afin de maintenir celui-ci opérationnel. La solution utilisée est 'fail2ban'.
+
 #### Au niveau intégrité
 
 #### Au niveau confidentialité
+
+La confidentialité est un point où nous mettons toute notre attention. Chacun des services est étudié afin de trouver une solution pour garantir une confidentialité maximale. 
+Au niveau du service web, nous sommes en train de mettre ne place un certificat SSL qui garantit la confidentialité des données personnelles sur notre site web.
+
+Au niveau du mail, nous sommes occupés à chercher un système de boîtes mails virtuelles afin de garantir à chaque utilisateur une confidentialité au niveau de ses mails. Nous cherchons également à sécurisé la base de données concernant les identifiants de chaque utilisateur. 
+
+Au niveau du service VOIP, une connexion par mot de passe fort est demandée pour son utilisation. 
 
 #### Au niveau disponibilité du service
 

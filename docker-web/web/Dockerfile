@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # install stuff
 RUN apt-get update
-RUN apt-get -y install php-cgi php lighttpd
+RUN apt-get -y install php-cgi php php-mysql lighttpd mariadb-client
 
 # set permissions
 RUN chmod -R 777 /var/log/lighttpd && chmod -R 777 /var/cache/lighttpd
@@ -28,6 +28,9 @@ COPY b2b/ /srv/htdocs/b2b.local/
 RUN mkdir -p /srv/htdocs/intra.local/
 COPY intra/ /srv/htdocs/intra.local/
 
+COPY init.sh /root/
+COPY initdb.sql /root/
+
 EXPOSE 80
 
-CMD ["lighttpd", "-D", "-f",  "/etc/lighttpd/lighttpd.conf"]
+CMD ["/root/init.sh"]

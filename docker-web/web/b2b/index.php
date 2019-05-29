@@ -23,7 +23,8 @@
       echo date("l jS \of F Y, h:i:s A - e") . "<br>";
       ?>
       <?php
-        $mysqli = new mysqli('db', 'root', 'abcd', 'woodytoys', 3306);
+        $pass = getenv("DB_PASSWORD");
+        $mysqli = new mysqli('db', 'root', $pass, 'woodytoys', 3306);
         if ($mysqli->connect_errno) {
           echo "NO <br>";
         } else {

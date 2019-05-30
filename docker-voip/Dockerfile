@@ -10,8 +10,8 @@ RUN apt-get install -y build-essential libxml2-dev libncurses5-dev libsqlite3-de
 # Preparation, installation and configuration of Asterisk
 RUN mkdir /usr/src/asterisk && \
   cd /usr/src/asterisk && \
-  wget -q http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz && \
-  tar -zxvf asterisk-15-current.tar.gz && \
+  wget -q http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15.7.2.tar.gz && \
+  tar -zxvf asterisk-15.7.2.tar.gz && \
   cd asterisk-15.* && \
   ./configure && \
   make menuselect.makeopts && \
@@ -22,9 +22,6 @@ RUN mkdir /usr/src/asterisk && \
   make menuselect.makeopts && \
   make && make install && make samples && make config && make install-logrotate
 
-# Stop Asterisk before copying all settings
-CMD ["asterisk", "stop"]
-
 # Copy all settings of Asterisk
 COPY config/sip.conf /etc/asterisk/sip.conf
 COPY config/users.conf /etc/asterisk/users.conf
@@ -33,13 +30,7 @@ COPY config/rtp.conf /etc/asterisk/rtp.conf
 COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 
 # Cleaning stuff
-## $BUILD_PACKAGES
-RUN apt-get remove --purge -y && \
-  apt-get autoremove -y && \
-  apt-get clean
-RUN apt-get autoremove g++ g++-7 -y && \
-  apt-get purge build-essential wget make -y
-RUN apt-get autoremove -y
+RUN rm -rf /usr/src/asterisk
 
 # set permissions
 RUN chmod -R 777 /var/log/asterisk && \
@@ -49,6 +40,6 @@ RUN chmod -R 777 /var/log/asterisk && \
 EXPOSE 5060/udp
 EXPOSE 10000-10060/udp
 
-# Start Asterisk and Fail2ban services
-CMD ["asterisk", "reload"]
-CMD ["asterisk", "-f"]
+# Start Asterisk
+CMD ["asterisk", "-vvvvvvf"]
+

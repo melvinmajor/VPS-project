@@ -30,6 +30,7 @@ echo "Connection to db failed";
 } else {
 if ($result = $mysqli->query("SELECT name, quantity FROM toys")) {
 echo "<table>";
+echo "<tr><th>Name</th><th>Quantity</th></tr>";
 while($row = mysqli_fetch_array($result))  {
 echo "<tr>";
 echo "<td>" . $row['name'] . "</td>";

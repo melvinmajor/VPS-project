@@ -10,7 +10,7 @@ RUN apt-get install -y build-essential libxml2-dev libncurses5-dev libsqlite3-de
 # Preparation, installation and configuration of Asterisk
 RUN mkdir /usr/src/asterisk && \
   cd /usr/src/asterisk && \
-  wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz && \
+  wget -q http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz && \
   tar -zxvf asterisk-15-current.tar.gz && \
   cd asterisk-15.* && \
   ./configure && \

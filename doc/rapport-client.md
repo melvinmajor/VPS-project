@@ -15,19 +15,17 @@ toc-own-page: true
 toc-title: Rapport client
 ---
 
-# WoodyToys - Rapport client
-
-## Responsables
+# 1. Responsables
 
 - **Partie DNS & Web :** Melvin Campos Casares
 - **Partie Mail :** Guillaume Vanden Herrewegen
 - **Partie VoIP :** Hubert Van De Walle
 
-## Cahier des charges
+# 2. Cahier des charges
 
 Dans le cadre de la mise en place de l'infrastructure réseau de l'entreprise WoodyToys, plusieurs aspects doivent être tenus en compte et seront expliquées ci-dessous.
 
-### Services internes
+## 2.1. Services internes
 
 Il est demandé d'offrir l'accès Internet sur les postes de travail fixes et mobiles des employés tout comme l'accès aux différents services internes (comme l'ERP) sans se reposer sur le fournisseur d'accès ni les fournisseurs extérieurs.
 Concrètement, il nous est demandé d'utiliser notre propre DNS afin de ne pas dépendre du fournisseur d'accès ou fournisseur extérieur afin d'accéder à Internet et aux différents services internes (comme l'ERP).
@@ -36,7 +34,7 @@ Un contrôle de traffic Web généré par les employés est une préférence.
 
 Il y a un certain intérêt pour la gestion des identités des employés pour l'utilisation des services internes même si pas obligatoire.
 
-### Web
+## 2.2. Web
 
 La vente des produits s'effectue avec les revendeurs via une plateforme accessible en ligne, expliqué un peu plus loin.
 
@@ -53,18 +51,18 @@ Un portail Web présentant les produits (www.woodytoys.be) et un site de vente e
 - Le site vitrine est un site statique en HTML/CSS,
 - Le site de vente en ligne pour les revendeurs (b2b) et l'ERP (intranet) sont des sites dynamiques en PHP/MySQL.
 
-### Mail
+## 2.3. Mail
 
 Une adresse mail est fournie à chaque employé et respectant le format suivant : `nom.prenom@woodytoys.be`.
 
 Il y a également présence d'adresses mails générique :
 
-- contact@woodytoys.be, redirigée vers la secrétaire,
-- b2b@woodytoys.be, redirigée vers les commerciaux.
+- <contact@woodytoys.be>, redirigée vers la secrétaire,
+- <b2b@woodytoys.be>, redirigée vers les commerciaux.
 
 Toutes les adresses mails doivent être consultables à l'aide d'un client mail classique depuis l'entreprise et la réception/envoi des mails doit être possible n'importe où (au bureau, en déplacement ou à domicile).
 
-### Téléphonie IP
+## 2.4. Téléphonie IP
 
 L'entreprise doit être accessible en VoIP depuis Internet afin que les clients puissent être en relation avec l'entreprise. Les appels aboutissent sur le poste de la secrétaire.
 L'adresse de contact est : contact@woodytoys.be.
@@ -73,11 +71,11 @@ Les employés de l'entreprise doivent pouvoir communiquer entre eux tant au bure
 
 Les communications identifiées sont les suivantes :
 
-- Ouvriers : un poste de téléphonie IP dans l'atelier et dans le hangar pour joindre les autres départements internes.
-- Secrétaire : dispose d'un PC sur lequel se trouve un softphone permettant de contacter n'importe qui.
-- Service comptabilité : numéro unique permettant de joindre le premier comptable disponible et un numéro spécifique par bureau (le service est réparti en 2 bureaux). Ils peuvent joindre l'extérieur et tout le monde en interne à l'exception du directeur.
-- Commerciaux : réunis dans un bureau, ils peuvent joindre l'extérieur et tout le monde n interne à l'exception du directeur. Ils disposent de smartphones avec lesquels ils peuvent téléphoner en déplacement.
-- Direction : il dispose d'un numéro qui peut joindre n'importe quel poste en interne et l'extérieur. Il ne peut être joint directement (les appels transitent d'abord auprès de la secrétaire).
+- _**Ouvriers :**_ un poste de téléphonie IP dans l'atelier et dans le hangar pour joindre les autres départements internes.
+- _**Secrétaire :**_ dispose d'un PC sur lequel se trouve un softphone permettant de contacter n'importe qui.
+- _**Service comptabilité :**_ numéro unique permettant de joindre le premier comptable disponible et un numéro spécifique par bureau (le service est réparti en 2 bureaux). Ils peuvent joindre l'extérieur et tout le monde en interne à l'exception du directeur.
+- _**Commerciaux :**_ réunis dans un bureau, ils peuvent joindre l'extérieur et tout le monde n interne à l'exception du directeur. Ils disposent de smartphones avec lesquels ils peuvent téléphoner en déplacement.
+- _**Direction :**_ il dispose d'un numéro qui peut joindre n'importe quel poste en interne et l'extérieur. Il ne peut être joint directement (les appels transitent d'abord auprès de la secrétaire).
 
 Tous les employés disposeront d'une boite vocale.
 
@@ -85,7 +83,7 @@ Une fusion est à prévoir entre deux réseaux téléphoniques, ce qui signifie 
 
 La visio-conférence, l'utilisation de téléphones ou passerelles SIP vers la téléphonie classique sont des petits plus éventuellement envisageables.
 
-### Fichiers de l'entreprise
+## 2.5. Fichiers de l'entreprise (Bonus)
 
 Un système de fichiers partagés est à prévoir.
 
@@ -95,19 +93,19 @@ Un système de fichiers partagés est à prévoir.
 - Un système de backup facile doit être prévu.
 - Les employés doivent pouvoir y accéder même en déplacement (PC portable, smartphones, tablettes).
 
-## Traduction des besoins du client en langage informatique
+# 3. Traduction des besoins du client en langage informatique
 
 Au vu des besoins du client, ce projet sera divisé en plusieurs parties :
 
 - Le client demande à intégrer un DNS (un ou plusieurs serveurs) avec la gestion des noms de domaines ainsi que des zones.
-- Il est demandé de mettre en place 3 sites web, tous sur un ou plusieurs serveurs web avec une intégration d'une base de données :
+- Il est demandé de mettre en place 3 sites web avec une intégration d'une base de données :
   - Un premier site web statique pour présenter l'entreprise,
-  - Deux autres sites, dynamique tout deux, pour la partie vente en ligne pour les revendeurs et l'ERP.
+  - Deux autres sites, dynamique tout deux, pour la partie vente en ligne pour les revendeurs ainsi que l'ERP.
 - La création d'un serveur mail permettant la gestion des envois et réception, une consultation via client mail et ce, de n'importe où.
   - Ce serveur mail doit héberger le nom de domaine de l'entreprise et notamment gérer les éventuels redirections.
   - Il stockera les mails envoyés et reçus.
 
-### DNS et accès web interne
+## 3.1. DNS et accès web interne
 
 Un service DNS interne et externe est en cours de finalisation.
 Ce service est développé sur `Bind9` et devrais être achevé dans les prochains jours.
@@ -115,7 +113,7 @@ Ce service est développé sur `Bind9` et devrais être achevé dans les prochai
 Même si `Bind9` existe depuis un certain temps et que d'autres alternatives plus récentes et, par conséquent, plus performantes existent, il reste très largement utilisé.
 De plus, de par sa popularité, il profite encore aujourd'hui de nombreuses mises à jour de sécurité ainsi que d'une documentation variée et complète.
 
-### Web
+## 3.2. Web
 
 Le déploiement et la configuration des services nécessaires pour l'hébergement est en cours de développement.
 
@@ -125,31 +123,50 @@ Il a une très faible empreinte mémoire en comparaison d'autres serveurs web et
 
 Les sites sont accessible en ligne sur notre plateforme de test `51.77.203.41` aux adresses suivantes :
 
-- <www.wt13.ephec-ti.be>
-- <b2b.wt13.ephec-ti.be>
-- <intranet.wt13.ephec-ti.be>
+- [www.wt13.ephec-ti.be](www.wt13.ephec-ti.be)
+- [b2b.wt13.ephec-ti.be](b2b.wt13.ephec-ti.be)
+- [intranet.wt13.ephec-ti.be](intranet.wt13.ephec-ti.be)
 
-### Mail
+## 3.3. Mail
 
-Concernant la partie mail, ce point est en cours de réflexion.
-Nous pensions utiliser `Postfix`, étant donné qu'il s'agit du système de server mail répandu et bien connu de tous.
+Concernant la partie mail, nous utilisons `Postfix`, étant donné qu'il s'agit du système de server mail répandu et bien connu de tous.
 
 `Postfix` n'est certes pas dès plus récents mais on profite, tout comme pour Bind9, d'une documentation complète.
 
-### VoIP
+## 3.4. VoIP
 
 Nous utilisons `Asterisk` comme moyen de communication en Voice over IP.
 Il est fort répandu et nous profitons du documentation dès plus remplies.
 
-D'autres systèmes ont retenu notre attention comme Dimelo (a RingCentral Company) ou Skype Connect qui malheureusement sont payant et ne correspondent pas totalement à ce que nous recherchons.
-Dans le cadre de Skype Connect, il s'agit d'un système PBX SIP proposé pour les professionnels avec système de location de canaux. Dimelo semble être dans le même principe.
+D'autres systèmes ont retenu notre attention comme _Dimelo (a RingCentral Company)_ ou _Skype Connect_ qui malheureusement sont payant et ne correspondent pas totalement à ce que nous recherchons.
+Dans le cadre de _Skype Connect_, il s'agit d'un système PBX SIP proposé pour les professionnels avec système de location de canaux et est basé sur le Cloud PBX, ce que nous ne cherchons pas à avoir.
+_Dimelo_ semble être dans le même principe même s'il propose.
 
-## Solutions techniques
+# 4. Solutions techniques
 
-### Compratifs des alternatives possible
+## 4.1. Comparatifs des alternatives possible
 
-### Choix et justification de la solution
+### 4.1.1. DNS et accès web interne
 
-## Besoins en maintenance
+### 4.1.2. Web
 
-## Deploiement
+### 4.1.3. Mail
+
+### 4.1.4. VoIP
+
+| Nom           | Gratuit d'utilisation   | Open Source       | support vidéo | IM/Chat | WebRTC |
+|---------------|-------------------------|-------------------|---------------|---------|--------|
+| Asterisk      | Oui                     | Oui               | Oui           | Oui     | Oui    |
+| Dimelo        | Non                     | Oui, commercial   | Live Chat*    | Oui     | Non    |
+| Skype Connect | Non                     | Non, commercial   | Oui           | Oui     | Oui    |
+| OpenPBX       | Oui (*Advanced* payant) | Oui               | Non           | Non     | Non    |
+| FreePBX       | Oui                     | Oui               | Oui           | Oui     | Oui    |
+| OpenSIPs      | Oui                     | Oui               | Oui           | Oui     | Non    |
+
+*Live Chat : système de streaming
+
+## 4.2. Choix et justification de la solution
+
+# 5. Besoins en maintenance
+
+# 6. Deploiement

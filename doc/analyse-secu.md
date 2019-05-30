@@ -15,9 +15,9 @@ toc-own-page: true
 toc-title: Analyse de sécurité
 ---
 
-# VPS & Docker
+# 1. VPS & Docker
 
-## Risques encourus
+## 1.1. Risques encourus
 
 Ils existent de nombreux risques.
 Les principaux risques portent sur la confidentialité, la disponibilité et l'intégrité.
@@ -32,14 +32,14 @@ Voici quelques-un des risques auxquels nous pouvons être exposé et donc par la
 Nos services doivent aussi être opérationnels 24 heures sur 24.
 Ce qui veut dire que nos serveurs doivent être à tous prix protégés de tout type de problème physique, aussi bien une panne électrique qu'une panne du matériel.
 
-### Par le VPS
+### 1.1.1. Par le VPS
 
 Nous avons commencé par changer le mot de passe d'accès à nos VPS.
 Nous avons ensuite sécurisé l'accès à notre VPS avec SSH.
 Cet accès est sécurisé car il utilise une clé unique par machine pouvant se connecter.
 En plus de cette clé, il faut entrer une pass-phrase pour pouvoir s'y connecter.
 
-## Contre-mesures mises en place
+## 1.2. Contre-mesures mises en place
 
 Nous avons mis en place l'authentification par clé et, par conséquent, désactivé l'authentification par mot de passe.
 De plus, le compte `root` à eu un changement de mot de passe par un nouveau à chiffrement fort.
@@ -50,27 +50,27 @@ Cette sécurité va bannir une adresse IP lorsque celle-ci réalise trop de tent
 La règle utilisée est de 10 tentatives en 2 minutes maximum, 20 minutes de bannissement de l'adresse IP.
 De plus, la protection contre l'attaque DDOS et la récidive est également suivie par `fail2ban`.
 
-# Services
+# 2. Services
 
-## Risques encourus
+## 2.1. Risques encourus
 
-### Par chacun des services déployés
+### 2.1.1. Par chacun des services déployés
 
-#### Service Web
+#### 2.1.1.1. Service Web
 
 Afin de garantir une sécurité au niveau de notre infrastructure web, nous sommes en train d'introduire un certificat SSL pour que notre site web soit sécurisé mais soit également crédible au niveau du client.
 
-#### Service Mail
+#### 2.1.1.2. Service Mail
 
 Le service mail étant encore en cours de développement, aucune protection n'a encore été mise en place. Cependant, nous envisageons d'introduire des sécurités afin de protéger le service contre tout type de spam.
 
-#### Service VoIP
+#### 2.1.1.3. Service VoIP
 
 Nous avons ajouté pour le VoIP une protection supplémentaire afin de maintenir celui-ci opérationnel. La solution utilisée est 'fail2ban'.
 
-#### Au niveau intégrité
+#### 2.1.1.4. Au niveau intégrité
 
-#### Au niveau confidentialité
+#### 2.1.1.5. Au niveau confidentialité
 
 La confidentialité est un point où nous mettons toute notre attention. Chacun des services est étudié afin de trouver une solution pour garantir une confidentialité maximale.
 Au niveau du service web, nous sommes en train de mettre ne place un certificat SSL qui garantit la confidentialité des données personnelles sur notre site web.
@@ -79,10 +79,10 @@ Au niveau du mail, nous sommes occupés à chercher un système de boîtes mails
 
 Au niveau du service VOIP, une connexion par mot de passe fort est demandée pour son utilisation.
 
-#### Au niveau disponibilité du service
+#### 2.1.1.6. Au niveau disponibilité du service
 
-## Contre-mesures
+## 2.2. Contre-mesures
 
-### Proposition
+### 2.2.1. Proposition
 
-### Mise en place
+### 2.2.2. Mise en place

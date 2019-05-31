@@ -2,9 +2,10 @@
 # See repository at https://github.com/melvinmajor/VPS-project
 # ============================================================
 
-# Documents and useless files
+# Documents and useless files/folders
 thumbs.db
 \.DS_Store
 */tmp/*
 .dbdata/
 *.swp
+.idea/

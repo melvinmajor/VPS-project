@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.04
 
 # avoid timezone prompt
 ENV DEBIAN_FRONTEND=noninteractive

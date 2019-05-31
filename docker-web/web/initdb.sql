@@ -1,8 +1,8 @@
-CREATE DATABASE woodytoys;
+CREATE DATABASE IF NOT EXISTS woodytoys;
 
 USE woodytoys;
 
-CREATE TABLE toys(
+CREATE TABLE IF NOT EXISTS toys(
     id int not null auto_increment,
     name varchar(64),
     quantity int not null,

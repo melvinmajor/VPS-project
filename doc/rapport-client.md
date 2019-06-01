@@ -118,7 +118,7 @@ De plus, de par sa popularité, il profite encore aujourd'hui de nombreuses mise
 Le déploiement et la configuration des services nécessaires pour l'hébergement est en cours de développement.
 
 Nous avons choisi `lighttpd` pour les performances qu'il offre en comparaison d'`apache` et `nginx`.
-`Lighttpd` est un web-server sécurisé, rapide et flexible qui à été optimisé pour des environnements à hautes performance.
+`Lighttpd` est un serveur web sécurisé, rapide et flexible qui a été optimisé pour des environnements à hautes performance.
 Il a une très faible empreinte mémoire en comparaison d'autres serveurs web et tient compte de la charge du processeur.
 
 Les sites sont accessible en ligne sur notre plateforme de test `51.77.203.41` aux adresses suivantes :
@@ -136,7 +136,8 @@ Concernant la partie mail, nous utilisons `Postfix`, étant donné qu'il s'agit 
 ## 3.4. VoIP
 
 Nous utilisons `Asterisk` comme moyen de communication en Voice over IP.
-Il est fort répandu et nous profitons du documentation dès plus remplies.
+Il est fort répandu mais nous profitons du documentation minimale.
+Heureusement, de nombreux utilisateurs proposent du contenu pour mieux comprendre son utilisation.
 
 D'autres systèmes ont retenu notre attention comme _Dimelo (a RingCentral Company)_ ou _Skype Connect_ qui malheureusement sont payant et ne correspondent pas totalement à ce que nous recherchons.
 Dans le cadre de _Skype Connect_, il s'agit d'un système PBX SIP proposé pour les professionnels avec système de location de canaux et est basé sur le Cloud PBX, ce que nous ne cherchons pas à avoir.
@@ -149,6 +150,31 @@ _Dimelo_ semble être dans le même principe même s'il propose.
 ### 4.1.1. DNS et accès web interne
 
 ### 4.1.2. Web
+
+**Apache**_ fournit une variété de modules MPM (MultiProcessing Modules) qui lui permet de s'exécuter en mode process-based, hybride (processus et thread) ou hybride évenementiel.
+Apache est conçu pour réduire les temps de latence tout en augmentant le débit par rapport au traitement d'un grand nombre de demandes (garantie d'un traitement cohérent et fiable des demandes dans un délai raisonnable.
+Il s'agirait du serveur web (tout confondu) le plus utilisé dans le monde.
+
+_**Microsoft IIS** (Internet Information Services)_ est un serveur web extensible utilisé sur les systèmes Windows NT.
+Sur des Workstation Windows, IIS ne supporte que 10 connexions TCP/IP en simultané contrairement sur les serveurs Windows ou le nombre est illimité.
+Il s'agirait du deuxième serveur web (tout confondu) le plus utilisé dans le monde.
+
+_**Lighttpd**_ est optimisé pour des environnements où la rapidité est le plus important tout en restant conforme aux normes, sécurisé et flexible.
+
+_**Nginx**_ s'agit d'un serveur web, reverse proxy, load balancer, proxy mail et cache HTTP.
+Nginx utilise une approche événementielle asynchrone au lieu de threads afin de traiter les requêtes et fournir des performances plus prévisibles sous des charges élevées.
+Il s'agirait du deuxième serveur web open source et du troisième serveur web (tout confondu) le plus utilisé dans le monde.
+
+| Nom           | Gratuit d'utilisation | Open Source                   | Système d'exploitation supporté                  | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
+|---------------|-----------------------|-------------------------------|--------------------------------------------------|---------|---------------|------|--------|
+| Apache        | Oui                   | Oui, *Apache License 2.0*     | Tous                                             | Oui     | Oui           | Oui  | Oui    |
+| Microsoft IIS | Oui                   | Non, *Shareware / Windows NT* | Windows                                          | Oui     | Oui           | Oui  | Oui    |
+| Lighttpd      | Oui                   | Oui, *BSD License 2.0*        | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Oui     | Oui           | Oui  | Oui    |
+| Nginx         | Oui                   | Oui, *FreeBSD License*        | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Oui     | Oui           | Oui  | Oui    |
+
+Le support des systèmes d'exploitation concernent : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
+
+*Nginx: support de Windows via Cygwin.
 
 ### 4.1.3. Mail
 
@@ -166,6 +192,20 @@ _Dimelo_ semble être dans le même principe même s'il propose.
 *Live Chat : système de streaming
 
 ## 4.2. Choix et justification de la solution
+
+_**Nos choix se sont reposé sur :**_
+
+- **Web : Lighttpd**
+- **Mail : Postfix**
+- **VoIP : Asterisk**
+
+Lighttpd a été retenu étant donné qu'il est pensé pour la rapidité, fonctionne sur des systèmes avec peu de mémoire vive, tient compte de la charge du processeur, apporte une bonne sécurisation et flexibilité.
+
+Bind9 et Postfix ont été choisis pour leur documentation conséquente et popularité.
+
+Asterisk, quant à lui, est fort répandu, mais sa documentation est minimaliste et ne comprend que sa configuration de base ainsi qu'une liste sommaire de toutes ses fonctions et fichier de configuration.
+Heureusement, de nombreux utilisateurs proposent du contenu pour mieux comprendre son utilisation.
+De nombreux modules compatibles avec ce dernier sont également disponibles en ligne.
 
 # 5. Besoins en maintenance
 

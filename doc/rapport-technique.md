@@ -209,10 +209,12 @@ Les erreurs des logs sont les suivants :
 - 51 : Hanging up call - no reply to our critical packet
 - 51 : re-invite to non-existing call leg on other UA
 
-### 5.1.8. Mise en place du protocole HTTPS (non résolu)
+### 5.1.8. Mise en place du protocole HTTPS (résolu)
 
-Le protocole `HTTPS` n'est toujours pas supporté à l'heure actuelle et il est planifié que sa mise en place soit faite dans les prochains jours.
-Melvin a commencé le support du protocole `HTTPS` mais il n'arrive pas à finaliser ce dernier.
+Le protocole `HTTPS` à suscité quelques questionnement au niveau de son implémentation.
+Melvin a commencé le support du protocole `HTTPS` mais n'arrivait pas à fixer une connexion refusée pour l'ACME challenge de Certbot dont les seuls pistes étaient DNS A/AAAA record(s) contenant les bonnes adresses IP ou le mur pare-feu bloquant la communication entre serveur et client.
+
+Le problème n'ayant pas été découvert et fixé, Hubert à repris de zéro la configuration de HTTPS et l'a mené à bien tout en récupérant une partie de la configuration précédente réalisée par Melvin.
 
 # 6. Procédure de validation du déploiement de la solution
 

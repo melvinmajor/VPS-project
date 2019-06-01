@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.04
 
 # avoid timezone prompt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -33,13 +33,13 @@ COPY config/voicemail.conf /etc/asterisk/voicemail.conf
 RUN rm -rf /usr/src/asterisk
 
 # set permissions
-RUN chmod -R 777 /var/log/asterisk && \
-  chmod -R 777 /var/log/asterisk/cdr-csv
+RUN chmod -R 700 /var/log/asterisk && \
+  chmod -R 700 /var/log/asterisk/cdr-csv
 
 # Expose ports for connectivity and audio channel
 EXPOSE 5060/udp
 EXPOSE 10000-10060/udp
 
 # Start Asterisk
-CMD ["asterisk", "-vvvvvvf"]
+CMD ["asterisk", "-f"]
 

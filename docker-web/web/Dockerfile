@@ -1,11 +1,11 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.04
 
 # avoid timezone prompt
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install stuff
 RUN apt-get update
-RUN apt-get -y install php-cgi php php-mysql lighttpd mariadb-client
+RUN apt-get -y install php-cgi php php-mysql lighttpd mariadb-client certbot
 
 # set permissions
 RUN chmod -R 777 /var/log/lighttpd && chmod -R 777 /var/cache/lighttpd
@@ -31,6 +31,9 @@ COPY intra/ /srv/htdocs/intra.local/
 COPY init.sh /root/
 COPY initdb.sql /root/
 
+RUN mkdir -p /etc/lighttpd/certbot
+
 EXPOSE 80
+EXPOSE 443
 
 CMD ["/root/init.sh"]

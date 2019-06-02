@@ -25,6 +25,11 @@ It's asked to relate everything with 3 VPS, all running Ubuntu, and Docker.
 
 ## Status
 
-- The DNS part is in good working conditions.
-- The Web part still needs some improvements but is already partly working.
-- The Mail part is the next stage.
+- [x] The DNS part is in good working condition.
+- [x] The Web part is in good working condition.
+- [x] The Mail part is in good working condition.
+- [ ] The VoIP part is partly working. Some things needs to be fixed.
+
+## WoodyToys logo
+
+<p align="center"><img src ="https://github.com/melvinmajor/VPS-project/blob/master/wiki/wt-logo.png" /></p>

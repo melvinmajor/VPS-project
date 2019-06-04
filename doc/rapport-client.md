@@ -127,6 +127,22 @@ Les sites sont accessible en ligne sur notre plateforme de test `51.77.203.41` a
 - [b2b.wt13.ephec-ti.be](b2b.wt13.ephec-ti.be)
 - [intranet.wt13.ephec-ti.be](intranet.wt13.ephec-ti.be)
 
+### 3.2.1. Certificat SSL
+
+Afin de protéger au mieux les sites internet, un certificat menant au protocole HTTPS est à intégrer.
+
+Pour ce faire, `Let's Encrypt` est notre choix retenu étant donné que les certificats auto-signés sont difficile à renouveler aisément.
+
+`Let's Encrypt` est une autorité de certifciation gratuite, automatisée, et fourni par le Internet Security Research Group (ISRG).
+Les principes clés de Let's Encrypt sont :
+
+- Gratuit : toute personne possédant un nom de domaine peut utiliser Let's Encrypt pour obtenir un certificat de confiance, sans frais,
+- Automatique : sa configuration et son renouvellement automatique est aisé puisqu'il est compatible avec la plupart des logiciels exécutés sur un serveur web,
+- Sécurisé : Let's Encrypt sert également de plate-forme pour faire progresser les meilleures pratiques de sécurité TLS, du côté des autorités de certification et du côté des opérateurs de sites en les aidant à sécuriser correctement leurs serveurs,
+- Transparent : tous les certificats délivrés ou révoqués sont enregistrés publiquement et mis à disposition de toute personne souhaitant les inspecter,
+- Ouvert : le protocole d'émission et de renouvellement automatique sera publié en tant que norme ouverte que d'autres peuvent adopter.
+- Coopérative : à l'instar des protocoles Internet sous-jacents eux-mêmes, Let's Encrypt est un effort commun visant à bénéficier à la communauté, au-delà du contrôle de toute organisation.
+
 ## 3.3. Mail
 
 Concernant la partie mail, nous utilisons `Postfix`, étant donné qu'il s'agit du système de server mail répandu et bien connu de tous.
@@ -165,29 +181,43 @@ _**Nginx**_ s'agit d'un serveur web, reverse proxy, load balancer, proxy mail et
 Nginx utilise une approche événementielle asynchrone au lieu de threads afin de traiter les requêtes et fournir des performances plus prévisibles sous des charges élevées.
 Il s'agirait du deuxième serveur web open source et du troisième serveur web (tout confondu) le plus utilisé dans le monde.
 
-| Nom           | Gratuit d'utilisation | Open Source                   | Système d'exploitation supporté                  | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
-|---------------|-----------------------|-------------------------------|--------------------------------------------------|---------|---------------|------|--------|
-| Apache        | Oui                   | Oui, *Apache License 2.0*     | Tous                                             | Oui     | Oui           | Oui  | Oui    |
-| Microsoft IIS | Oui                   | Non, *Shareware / Windows NT* | Windows                                          | Oui     | Oui           | Oui  | Oui    |
-| Lighttpd      | Oui                   | Oui, *BSD License 2.0*        | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Oui     | Oui           | Oui  | Oui    |
-| Nginx         | Oui                   | Oui, *FreeBSD License*        | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Oui     | Oui           | Oui  | Oui    |
+| Nom               | Gratuit d'utilisation | Open Source                   | Système d'exploitation supporté                  | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
+|-------------------|-----------------------|-------------------------------|--------------------------------------------------|---------|---------------|------|--------|
+| **Apache**        | Oui                   | Oui, *Apache License 2.0*     | Tous                                             | Oui     | Oui           | Oui  | Oui    |
+| **Microsoft IIS** | Oui                   | Non, *Shareware / Windows NT* | Windows                                          | Oui     | Oui           | Oui  | Oui    |
+| **Lighttpd**      | Oui                   | Oui, *BSD License 2.0*        | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Oui     | Oui           | Oui  | Oui    |
+| **Nginx**         | Oui                   | Oui, *FreeBSD License*        | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Oui     | Oui           | Oui  | Oui    |
 
 Le support des systèmes d'exploitation concernent : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
 
 *Nginx: support de Windows via Cygwin.
 
+#### 4.1.2.1. Certificats SSL
+
+| Nom | Processus | Coût | Validation | Confiance | Certificat génériques | Certificat uniquement IP | Période d'expiration |
+|-----|-----------|------|------------|-----------|-----------------------|--------------------------|----------------------|
+| **Autorité de certification commerciale** | manuel (configuration initiale et renouvellement) | Entre 10$ et 1000$ | DV, OV, EV | Approuvé par défaut | Oui | Certains pour adresses IP publiques | 1 à 3 ans |
+| **Let's Encrypt** | automatique (renouvellement et installation initiale) | gratuit | DV | approuvé par défaut | Oui | Non | 90 jours |
+| **Certificat auto-signé** | manuelle (création certificat uniquement) | gratuit | DV, OV | aucun par défaut, doit être manuellement marqué comme de confiance (aucun AC commun impliqué) | Oui | Oui, toute propriété intellectuelle | n'importe lequel |
+| **Autorité de certification privé** | manuel (création de certificat, renouvellement et configuration de l'autorité de certification) | gratuit | DV, OV | aucun par défaut, distribution manuelle | Oui | Oui, toute propriété intellectuelle | n'importe lequel |
+
+- CA : Autorité de Certification
+- DV : Domaine de Validation
+- OV : Validation de l'organisation
+- EV : Validation étendue
+
 ### 4.1.3. Mail
 
 ### 4.1.4. VoIP
 
-| Nom           | Gratuit d'utilisation   | Open Source       | support vidéo | IM/Chat | WebRTC |
-|---------------|-------------------------|-------------------|---------------|---------|--------|
-| Asterisk      | Oui                     | Oui               | Oui           | Oui     | Oui    |
-| Dimelo        | Non                     | Oui, commercial   | Live Chat*    | Oui     | Non    |
-| Skype Connect | Non                     | Non, commercial   | Oui           | Oui     | Oui    |
-| OpenPBX       | Oui (*Advanced* payant) | Oui               | Non           | Non     | Non    |
-| FreePBX       | Oui                     | Oui               | Oui           | Oui     | Oui    |
-| OpenSIPs      | Oui                     | Oui               | Oui           | Oui     | Non    |
+| Nom               | Gratuit d'utilisation   | Open Source       | support vidéo | IM/Chat | WebRTC |
+|-------------------|-------------------------|-------------------|---------------|---------|--------|
+| **Asterisk**      | Oui                     | Oui               | Oui           | Oui     | Oui    |
+| **Dimelo**        | Non                     | Oui, commercial   | Live Chat*    | Oui     | Non    |
+| **Skype Connect** | Non                     | Non, commercial   | Oui           | Oui     | Oui    |
+| **OpenPBX**       | Oui (*Advanced* payant) | Oui               | Non           | Non     | Non    |
+| **FreePBX**       | Oui                     | Oui               | Oui           | Oui     | Oui    |
+| **OpenSIPs**      | Oui                     | Oui               | Oui           | Oui     | Non    |
 
 *Live Chat : système de streaming
 

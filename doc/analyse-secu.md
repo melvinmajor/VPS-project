@@ -61,24 +61,40 @@ Le serveur peut être surchargé l'empêchant de répondre aux requêtes.
 
 #### 2.1.1.2. Service Web
 
-Afin de garantir une sécurité au niveau de notre infrastructure web, nous sommes en train d'introduire un certificat SSL pour que notre site web soit sécurisé mais soit également crédible au niveau du client.
+Afin de garantir une sécurité au niveau de notre infrastructure web, nous avons mis en place un certificat SSL pour que nos sites web soient sécurisé.
+Par le biais de ce certificat, nos sites internet passent en HTTPS avec certificat signé, prouvant la sécurisation et le respect de la confidentialité.
+
+Pour ce faire, nous avons choisi Let's Encrypt, une autorité de certifciation gratuite, automatisée, et fourni par le Internet Security Research Group (ISRG).
+
+Le choix de Let's Encrypt, plutôt que d'un certificat auto-signé est simple :
+
+- Le renouvellement de Let's Encrypt est automatique,
+- Les certificats générés sont de confiance alors que les certificats auto-signés doivent être manuellement marqué comme de confiance,
+- La génération du certificat est aisé et rapide via Let's Encrypt.
 
 #### 2.1.1.3. Service Mail
 
-Le service mail étant encore en cours de développement, aucune protection n'a encore été mise en place. Cependant, nous envisageons d'introduire des sécurités afin de protéger le service contre tout type de spam.
+Le service mail étant encore en cours de développement, aucune protection n'a encore été mise en place.
+Cependant, nous envisageons d'introduire des sécurités afin de protéger le service contre tout type de spam.
 
 #### 2.1.1.4. Service VoIP
 
-Nous avons ajouté pour le VoIP une protection supplémentaire afin de maintenir celui-ci opérationnel. La solution utilisée est 'fail2ban'.
+Nous avons ajouté pour le VoIP une protection supplémentaire afin de maintenir celui-ci opérationnel.
+La solution utilisée est 'fail2ban', où nous avons intégré les protections asterisk-iptables et asterisk-security-tables.
+
+Concrètement, 3 tentatives de connexion maximum sont accepté avant que l'adresse IP en question soit bannie pour une durée de 24h.
+La période de renseignement pendant laquelle le log est examiné est de 1h.
 
 #### 2.1.1.5. Au niveau intégrité
 
 #### 2.1.1.6. Au niveau confidentialité
 
-La confidentialité est un point où nous mettons toute notre attention. Chacun des services est étudié afin de trouver une solution pour garantir une confidentialité maximale.
+La confidentialité est un point où nous mettons toute notre attention.
+Chacun des services est étudié afin de trouver une solution pour garantir une confidentialité maximale.
 Au niveau du service web, nous sommes en train de mettre ne place un certificat SSL qui garantit la confidentialité des données personnelles sur notre site web.
 
-Au niveau du mail, nous sommes occupés à chercher un système de boîtes mails virtuelles afin de garantir à chaque utilisateur une confidentialité au niveau de ses mails. Nous cherchons également à sécurisé la base de données concernant les identifiants de chaque utilisateur.
+Au niveau du mail, nous sommes occupés à chercher un système de boîtes mails virtuelles afin de garantir à chaque utilisateur une confidentialité au niveau de ses mails.
+Nous cherchons également à sécurisé la base de données concernant les identifiants de chaque utilisateur.
 
 Au niveau du service VOIP, une connexion par mot de passe fort est demandée pour son utilisation.
 

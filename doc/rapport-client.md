@@ -226,10 +226,13 @@ Le support des systèmes d'exploitation concernent : Windows, Linux, macOS, BSD,
 _**Nos choix se sont reposé sur :**_
 
 - **Web : Lighttpd**
+  - **Certificat : Let's Encrypt**
 - **Mail : Postfix**
 - **VoIP : Asterisk**
 
 Lighttpd a été retenu étant donné qu'il est pensé pour la rapidité, fonctionne sur des systèmes avec peu de mémoire vive, tient compte de la charge du processeur, apporte une bonne sécurisation et flexibilité.
+
+Let's Encrypt pour les certificats SSL menant au protocole HTTPS pour sa configuration aisée, son renouvellement automatisé et surtout qu'il s'agit d'un certificat de confiance et réputé.
 
 Bind9 et Postfix ont été choisis pour leur documentation conséquente et popularité.
 

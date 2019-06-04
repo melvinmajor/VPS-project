@@ -21,15 +21,8 @@ toc-title: Analyse de sécurité
 
 Ils existent de nombreux risques.
 Les principaux risques portent sur la confidentialité, la disponibilité et l'intégrité.
-Voici quelques-un des risques auxquels nous pouvons être exposé et donc par la suite, pouvoir nous en protéger.
 
-- Infiltration dans nos VPS,
-- Attaque de type dos (denial-of-service attack),
-- Fishing,
-- Authentification par Brutforce,
-- Sniffing de données.
-
-Nos services doivent aussi être opérationnels 24 heures sur 24.
+Nos services doivent également être opérationnels 24 heures sur 24.
 Ce qui veut dire que nos serveurs doivent être à tous prix protégés de tout type de problème physique, aussi bien une panne électrique qu'une panne du matériel.
 
 ### 1.1.1. Par le VPS
@@ -56,21 +49,31 @@ De plus, la protection contre l'attaque DDOS et la récidive est également suiv
 
 ### 2.1.1. Par chacun des services déployés
 
-#### 2.1.1.1. Service Web
+#### 2.1.1.1. DNS
+
+- Attaque de type Man in the Middle
+- Réponses falsifiées
+- Cache poisoning
+- Mise avant d'un service commercial
+- Blocage de certains sites web.
+
+Le serveur peut être surchargé l'empêchant de répondre aux requêtes.
+
+#### 2.1.1.2. Service Web
 
 Afin de garantir une sécurité au niveau de notre infrastructure web, nous sommes en train d'introduire un certificat SSL pour que notre site web soit sécurisé mais soit également crédible au niveau du client.
 
-#### 2.1.1.2. Service Mail
+#### 2.1.1.3. Service Mail
 
 Le service mail étant encore en cours de développement, aucune protection n'a encore été mise en place. Cependant, nous envisageons d'introduire des sécurités afin de protéger le service contre tout type de spam.
 
-#### 2.1.1.3. Service VoIP
+#### 2.1.1.4. Service VoIP
 
 Nous avons ajouté pour le VoIP une protection supplémentaire afin de maintenir celui-ci opérationnel. La solution utilisée est 'fail2ban'.
 
-#### 2.1.1.4. Au niveau intégrité
+#### 2.1.1.5. Au niveau intégrité
 
-#### 2.1.1.5. Au niveau confidentialité
+#### 2.1.1.6. Au niveau confidentialité
 
 La confidentialité est un point où nous mettons toute notre attention. Chacun des services est étudié afin de trouver une solution pour garantir une confidentialité maximale.
 Au niveau du service web, nous sommes en train de mettre ne place un certificat SSL qui garantit la confidentialité des données personnelles sur notre site web.
@@ -84,5 +87,10 @@ Au niveau du service VOIP, une connexion par mot de passe fort est demandée pou
 ## 2.2. Contre-mesures
 
 ### 2.2.1. Proposition
+
+#### 2.2.1.1. Sécurisation du DNS
+
+- DNSSec permet de crypter les enregistrements du DNS.
+- DNS interne et externe pour différencier les accès internes et externes de l'entreprise.
 
 ### 2.2.2. Mise en place

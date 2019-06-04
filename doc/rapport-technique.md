@@ -52,6 +52,12 @@ Chacun à suivi une méthodologie identique et mis en commun concernant la sécu
 Nous avons continué à mettre en place le DNS et la partie web sans pour autant arriver à un résultat final.
 De plus, une première réflexion à été faite concernant la partie mail mais qui n'a pas encore abouti étant donné la priorité sur les DNS et web.
 
+### 1.1.3. Bilan pour la mission VoIP (Hubert Van De Walle)
+
+Nous avons fini la mise en place du DNS et avançons de bon train sur la partie web ainsi que la partie mail.
+Melvin à pris en charge le développement de la partie VoIP afin que nous puissions rattraper notre retard.
+Globalement parlant, les parties principales sont faites et beaucoup de choses sont presques finies; il ne reste que certains détails à finir afin d'achever DNS, Web et Mail.
+
 # 2. Méthodologie
 
 Nous avons commencé par lire la documentation des outils Docker et commencer quelques tests afin de pouvoir mieux comprendre son fonctionnement.
@@ -68,9 +74,11 @@ De plus, lorsque nous rencontrons un problème, nous les transmettons aux autres
 
 La modélisation du schéma réseau à été réalisée par Guillaume Vanden Herrewegen, tout comme le début du Wiki du [repository GitHub](https://github.com/melvinmajor/VPS-project/wiki).
 
-Hubert et Melvin sont en charge de la partie web qui est en cours de finalisation.
-Guillaume est en charge de la partie DNS qui, techniquement parlant, devrait être fonctionnel mais qui ne l'est pas en pratique.
-Melvin supervisait les modifications à faire sur les différents rapports.
+Hubert et Melvin sont en charge de la partie web qui est achevé.
+Guillaume est en charge de la partie DNS qui, techniquement parlant, devrait être fonctionnel mais qui ne l'est pas totalement en pratique.
+Guillaume est également en charge de la partie Mail qui est achevé.
+Melvin est en charge de la partie VoIP qui concrètement parlant, ne fonctionne que partiellement.
+Melvin supervisait également les modifications à faire sur les différents rapports et les modifiait souvent lui-même principalement.
 
 # 4. Schéma réseau et justification des choix
 
@@ -117,7 +125,7 @@ Voici le plan de numérotation :
 Il est bien entendu possible de créer de nouveaux utilisateurs dans le service comptabilité ainsi que pour les commerciaux.
 Dans la configuration du DialPlan, il a été pensé de créer des numéros de 300 à 399 inclus.
 
-# 5. Difficultés
+# 5. Difficultées
 
 ## 5.1. Problèmes rencontrés
 
@@ -215,6 +223,18 @@ Le protocole `HTTPS` à suscité quelques questionnement au niveau de son implé
 Melvin a commencé le support du protocole `HTTPS` mais n'arrivait pas à fixer une connexion refusée pour l'ACME challenge de Certbot dont les seuls pistes étaient DNS A/AAAA record(s) contenant les bonnes adresses IP ou le mur pare-feu bloquant la communication entre serveur et client.
 
 Le problème n'ayant pas été découvert et fixé, Hubert à repris de zéro la configuration de HTTPS et l'a mené à bien tout en récupérant une partie de la configuration précédente réalisée par Melvin.
+
+### 5.1.9. Limite du nombre de certificats générés par nom de domaine (en cours de résolution automatisée)
+
+Suite à quelques tests et modifications des sites internet, nous avons compilé à plusieurs reprises notre Docker concernant la partie web.
+Etant donné que nous avons intégré la génération d'une clé Let's Encrypt au sein même de la compilation du Docker, il s'avère que la clé est renouvelée à chaque compilation.
+Cela à donc, par conséquent, entraîné le fait que nous ayons atteint le nombre limites de certificats pouvant être générés auprès de Let's Encrypt.
+
+D'après la documentation de Let's Encrypt, il s'avère qu'un délai de une semaine environ est prévu avant de pouvoir à nouveau en générer.
+Le système de "fenêtre coulissante" est utilisé par Let's Encrypt.
+Par exemple, si nous émettons 25 certificats lundi et 25 autres vendredi, nous pouvons de nouveau en émettre à partir de lundi.
+
+Ce problème sera donc résolu d'ici les prochains jours.
 
 # 6. Procédure de validation du déploiement de la solution
 

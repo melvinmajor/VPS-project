@@ -1,4 +1,9 @@
-version: '3'
+version: '3.4'
+
+x-default: &default
+    environment:
+        MARIADB_ROOT_PASSWORD: 'this is not a real password'
+
 services:
     web:
         build: ./web
@@ -7,13 +12,11 @@ services:
             - '443:443'
         depends_on:
             - db
-        environment:
-            DB_PASSWORD: abcd
+        <<: *default
     db:
         build: ./db
         ports:
             - '3306:3306'
-        environment:
-            MARIADB_ROOT_PASSWORD: abcd
         volumes:
             - .dbdata:/var/lib/mysql
+        <<: *default

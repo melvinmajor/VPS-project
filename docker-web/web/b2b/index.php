@@ -24,7 +24,7 @@
         ?>
         <p>Here's the list of our actual catalogue:</p>
         <?php
-          $pass = getenv("DB_PASSWORD");
+          $pass = getenv("MARIADB_ROOT_PASSWORD");
           $mysqli = new mysqli('db', 'root', $pass, 'woodytoys', 3306);
           if ($mysqli->connect_errno) {
             echo "Connection to db failed";

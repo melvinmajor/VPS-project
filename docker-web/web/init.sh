@@ -15,8 +15,9 @@ chmod 777 $files
 
 lighttpd -f /etc/lighttpd/lighttpd.conf
 
-sleep 5
-
-certbot certonly --webroot -w /etc/lighttpd/certbot -d www.wt13.ephec-ti.be -d b2b.wt13.ephec-ti.be --email m.camposcasares@students.ephec.be --agree-tos --non-interactive 
+# Out of certificates :c
+# sleep 5
+# 
+# certbot certonly --webroot -w /etc/lighttpd/certbot -d www.wt13.ephec-ti.be -d b2b.wt13.ephec-ti.be --email m.camposcasares@students.ephec.be --agree-tos --non-interactive 
 
 tail -f $files

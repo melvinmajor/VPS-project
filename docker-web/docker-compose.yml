@@ -2,7 +2,7 @@ version: '3.4'
 
 x-default: &default
     environment:
-        MARIADB_ROOT_PASSWORD: 'this is not a real password'
+        MARIADB_ROOT_PASSWORD: 'abcdefghchangeme'
 
 services:
     web:

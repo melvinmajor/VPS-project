@@ -25,10 +25,9 @@ Nos services doivent également être opérationnels 24 heures sur 24.
 
 ### 1.1.1. Par le VPS
 
-Nous avons commencé par changer le mot de passe d'accès à nos VPS.
-Nous avons ensuite sécurisé l'accès à notre VPS avec SSH.
-Cet accès est sécurisé car il utilise une clé unique par machine pouvant se connecter.
-En plus de cette clé, il faut entrer une pass-phrase pour pouvoir s'y connecter.
+- Usurpation d'identité du serveur
+- Attaque sur le mot de passe
+- Surcharge du serveur
 
 ### 1.1.2. Par Docker
 
@@ -50,6 +49,8 @@ Nous avons également mis en place `fail2ban` qui empêche toute tentative d'att
 Cette sécurité va bannir une adresse IP lorsque celle-ci réalise trop de tentatives de connexion refusées.
 La règle utilisée est de 10 tentatives en 2 minutes maximum, 20 minutes de bannissement de l'adresse IP.
 De plus, la protection contre l'attaque DDOS et la récidive est également suivie par `fail2ban`.
+
+Nous gardons également notre VPS à jour aussi souvent que possible.
 
 ### 1.2.2. Pour Docker
 

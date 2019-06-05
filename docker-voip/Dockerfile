@@ -38,6 +38,7 @@ RUN chmod -R 700 /var/log/asterisk && \
 
 # Expose ports for connectivity and audio channel
 EXPOSE 5060/udp
+EXPOSE 4569/udp
 EXPOSE 10000-10060/udp
 
 # Start Asterisk

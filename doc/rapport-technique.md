@@ -238,10 +238,37 @@ Ce problème sera donc résolu d'ici les prochains jours.
 
 # 6. Procédure de validation du déploiement de la solution
 
-Aucune procédure particulière de validation du déploiement de la solution n'a été réalisée à l'heure actuelle hormis la compilation via DocherHub ainsi qu'en local.
+Nous n'avons pas mis en place une procédure de vérification automatique.
+Malgré cela, nous nous sommes assuré que nos services fonctionnent correctement et avons suivi une procédure de vérification manuelle.
+
+## 6.1. DNS
+
+Pour valider le service DNS, nous avons utilisé les commandes `dig` et `nslookup` afin de vérifier les ports.
+Nous avons également essayé les accès sur les sites externes.
+Concernant le site interne, nous avons essayé avec `curl` mais due à une erreur inconnue encore à ce jour, il nous a été impossible de voir le site.
+
+Nous avons également vérifié l'utilisation des ports avec la commande `ss`.
+
+## 6.2. Web
+
+Pour la validation de la configuration Lighttpd, le simple fait de le lancer nous confirme sa validation ou non.
+En effet, en le démarrant, il nous affiche directement s'il y a un problème.
+
+Nous avons également vérifié l'utilisation des ports avec la commande `ss`.
+
+## 6.3. Mail
+
+## 6.4. VoIP
+
+La procédure de validation et de déploiement de VoIP est le test d'appels entre différents numéros inscrits dans le dialplan.
+
+De plus, nous avons vérifié l'utilisation des ports avec la commande `ss`.
 
 # 7. Réflexion sur le monitoring des services déployés
 
-La réflexion sur le monitoring des services déployés n'a pas été réalisée à l'heure actuelle.
+Le troubleshooting de nos configurations Docker a déjà été réalisé en parcourant la structure interne des images Docker déployée ainsi que des recherches dans les différents logs générés par ces derniers.
 
-Néanmoins, le troubleshooting de nos configurations Docker a déjà été réalisé en parcourant la structure interne des images Docker déployée ainsi que des recherches dans les différents logs générés par ces derniers.
+Fail2ban est déjà une forme de monitoring pour la sécurité.
+Il nous est possible de recevoir des mails lors des tentatives de connexions échouées.
+
+De plus, par le biais d'Asterisk, il nous est également possible d'être prévenu par mail lorsqu'une tentative de connexion multiple échoue.

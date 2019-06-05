@@ -28,6 +28,7 @@ COPY config/users.conf /etc/asterisk/users.conf
 COPY config/extensions.conf /etc/asterisk/extensions.conf
 COPY config/rtp.conf /etc/asterisk/rtp.conf
 COPY config/voicemail.conf /etc/asterisk/voicemail.conf
+COPY config/iax.conf /etc/asterisk/iax.conf
 
 # Cleaning stuff
 RUN rm -rf /usr/src/asterisk

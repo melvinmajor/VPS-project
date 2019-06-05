@@ -96,6 +96,23 @@ Schéma physique du réseau :
 
 Voici le plan d'adressage pour la partie mail :
 
+| Nom | Service | Adresse e-mail |
+|-----|---------|----------------|
+| Guillaume | Compte test | guillaume@wt13.ephec-ti.be |
+| Contact WoodyToys | Contact | contact@wt13.ephec-ti.be |
+| Direction WoodyToys | Direction | direction@wt13.ephec-ti.be |
+| Secrétariat WoodyToys | Direction | secretariat@wt13.ephec-ti.be |
+| Atelier WoodyToys | Ouvrier | atelier@wt13.ephec-ti.be |
+| Hangar WoodyToys | Ouvrier | hangar@wt13.ephec-ti.be |
+| Michel Roux | Comptabilité | m.roux@wt13.ephec-ti.be |
+| Christine Garcia | Comptabilité | c.garcia@wt13.ephec-ti.be |
+| Service commercial | Vente | service-commercial@wt13.ephec-ti.be |
+| Hubert Van De Walle | Vente | h.vandewalle@wt13.ephec-ti.be |
+| Guillaume Vanden Herrewegen | Vente | g.vandenherrewegen@wt13.ephec-ti.be |
+| Melvin Campos Casares | Vente | m.camposcasares@wt13.ephec-ti.be |
+| John Doe | Vente | j.doe@wt13.ephec-ti.be |
+| Albert Dupont | Vente | a.dupont@wt13.ephec-ti.be |
+
 ### 4.1.2. Plan d'adressage et de numérotation d'Asterisk (VoIP)
 
 Voici le plan d'adressage pour la partie Voice-Over IP :
@@ -124,6 +141,8 @@ Voici le plan de numérotation :
 
 Il est bien entendu possible de créer de nouveaux utilisateurs dans le service comptabilité ainsi que pour les commerciaux.
 Dans la configuration du DialPlan, il a été pensé de créer des numéros de 300 à 399 inclus.
+
+De plus, lorsque le service commercial, le service comptabilité et les ouvriers tentent de joindre qui que ce soit dans la zone 300 à 309, ils sont automatiquement redirigé vers le secrétariat.
 
 # 5. Difficultées
 
@@ -243,7 +262,7 @@ Malgré cela, nous nous sommes assuré que nos services fonctionnent correctemen
 
 ## 6.1. DNS
 
-Pour valider le service DNS, nous avons utilisé les commandes `dig` et `nslookup` afin de vérifier les ports.
+Pour valider le service DNS, nous avons utilisé les commandes `dig` sur nos sites web et `nslookup` sur notre nom de domaine afin de vérifier les ports.
 Nous avons également essayé les accès sur les sites externes.
 Concernant le site interne, nous avons essayé avec `curl` mais due à une erreur inconnue encore à ce jour, il nous a été impossible de voir le site.
 
@@ -257,6 +276,8 @@ En effet, en le démarrant, il nous affiche directement s'il y a un problème.
 Nous avons également vérifié l'utilisation des ports avec la commande `ss`.
 
 ## 6.3. Mail
+
+Pour cette partie, nous avons envoyé différents mails jusque quand le mail est arrivé à destination.
 
 ## 6.4. VoIP
 

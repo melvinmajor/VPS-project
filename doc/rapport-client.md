@@ -119,7 +119,9 @@ Le déploiement et la configuration des services nécessaires pour l'hébergemen
 
 Nous avons choisi `lighttpd` pour les performances qu'il offre en comparaison d'`apache` et `nginx`.
 `Lighttpd` est un serveur web sécurisé, rapide et flexible qui a été optimisé pour des environnements à hautes performance.
-Il a une très faible empreinte mémoire en comparaison d'autres serveurs web et tient compte de la charge du processeur.
+Il a une très faible empreinte mémoire en comparaison d'autres serveurs web et gère de manière effective la charge du processeur.
+
+En pratique, nous avons constaté une utilisation processeur de 0% et de mémoire de 0,1% sur nos serveurs lorsqu'il n'y avait pas de trafic web.
 
 Les sites sont accessibles en ligne sur notre plateforme de test `51.77.203.41` aux adresses suivantes :
 
@@ -165,6 +167,12 @@ _Dimelo_ semble être dans le même principe même s'il propose.
 
 ### 4.1.1. DNS et accès web interne
 
+| Nom         | Système d'exploitation supporté | Configuration | Documentation | Popularité      |
+|-------------|---------------------------------|---------------|---------------|-----------------|
+| **Bind**    | Linux, Windows, macOS, BSD      | Aisée         | Complète      | Très importante |
+| **dnsmasq** | Linux, Android, BSD, macOS      | Aisée         | Importante    | Importante      |
+| **Unbound** | Linux, Windows, macOS, BSD      | Aisée         | Très complète | Importante      |
+
 ### 4.1.2. Web
 
 **Apache**_ fournit une variété de modules MPM (MultiProcessing Modules) qui lui permet de s'exécuter en mode process-based, hybride (processus et thread) ou hybride évènementiel.
@@ -181,12 +189,12 @@ _**Nginx**_ s'agit d'un serveur web, reverse proxy, load balancer, proxy mail et
 Nginx utilise une approche événementielle asynchrone au lieu de threads afin de traiter les requêtes et fournir des performances plus prévisibles sous des charges élevées.
 Il s'agirait du deuxième serveur web open source et du troisième serveur web (tout confondu) le plus utilisé dans le monde.
 
-| Nom               | Gratuit d'utilisation | Open Source                   | Système d'exploitation supporté                  | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
-|-------------------|-----------------------|-------------------------------|--------------------------------------------------|---------|---------------|------|--------|
-| **Apache**        | Oui                   | Oui, *Apache License 2.0*     | Tous                                             | Oui     | Oui           | Oui  | Oui    |
-| **Microsoft IIS** | Oui                   | Non, *Shareware / Windows NT* | Windows                                          | Oui     | Oui           | Oui  | Oui    |
-| **Lighttpd**      | Oui                   | Oui, *BSD License 2.0*        | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Oui     | Oui           | Oui  | Oui    |
-| **Nginx**         | Oui                   | Oui, *FreeBSD License*        | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Oui     | Oui           | Oui  | Oui    |
+| Nom | Gratuit d'utilisation | Open Source | Système d'exploitation supporté | Configuration | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
+|-----|-----------------------|-------------|---------------------------------|---------------|---------|---------------|------|--------|
+| **Apache** | Oui | Oui, *Apache License 2.0* | Tous | Aisée | Oui | Oui | Oui | Oui |
+| **Microsoft IIS** | Oui | Non, *Shareware / Windows NT* | Windows | Complexe | Oui | Oui | Oui | Oui |
+| **Lighttpd** | Oui | Oui, *BSD License 2.0* | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Très aisée | Oui | Oui | Oui | Oui |
+| **Nginx** | Oui | Oui, *FreeBSD License* | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Aisée | Oui | Oui | Oui | Oui |
 
 Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
 
@@ -208,6 +216,12 @@ Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD,
 
 ### 4.1.3. Mail
 
+| Nom          | Niveau de sécurité | Niveau de performance | Année de création | Communauté     |
+|--------------|--------------------|-----------------------|-------------------|----------------|
+| **Exim**     | Assez bon          | Très bon              | 1995              | Large          |
+| **Postfix**  | Bon                | Excellent             | 1997              | Taille moyenne |
+| **Sendmail** | Moyen              | Ok                    | 1982              | Large          |
+
 ### 4.1.4. VoIP
 
 | Nom               | Gratuit d'utilisation   | Open Source       | support vidéo | IM/Chat | WebRTC |
@@ -225,6 +239,7 @@ Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD,
 
 _**Nos choix se sont reposés sur :**_
 
+- **DNS : Bind9**
 - **Web : Lighttpd**
   - **Certificat : Let's Encrypt**
 - **Mail : Postfix**
@@ -240,6 +255,29 @@ Asterisk, quant à lui, est fort répandu, mais sa documentation est minimaliste
 Heureusement, de nombreux utilisateurs proposent du contenu pour mieux comprendre son utilisation.
 De nombreux modules compatibles avec ce dernier sont également disponibles en ligne.
 
+Si besoin, nous pouvons créer de nouveaux utilisateurs tant au niveau des mails qu'au niveau du Voice-Over IP.
+Pour ce faire, il suffit simplement de nous contacter et nous intégrerons les nouvelles informations.
+
+Toute mise à jour du site internet peut également se faire aisément sur simple demande.
+La base de données peut être mise à jour à distance directement par vous et nous vous donnerons les informations de connexion pour cela.
+
 # 5. Besoins en maintenance
 
+Comme dans tout bon système administré, il est nécessaire de vérifier de façon régulière les logs générés par nos différents serveurs déployé.
+Les logs sont considérés comme étant la boîte noire des services dans laquelle tout évènement est enregistré.
+
+Pour ce faire, nous conviendront d'un moment pour effectuer les vérifications de façon régulière sans perturber l'entreprise.
+
+## 5.1. Web
+
+Un suivi au niveau du certificat est nécessaire afin de réaliser le renouvellement de Let's Encrypt.
+
 # 6. Déploiement
+
+| Serveur  | Composants           | Etat  |
+|----------|----------------------|-------|
+| **DNS**  | Bind9                | Lancé |
+| **Web**  | Lighttpd, PHP, HTTPS | Lancé |
+| **DB**   | MariaDB              | Lancé |
+| **Mail** | Postfix              | Lancé |
+| **VoIP** | Asterisk             | Lancé |

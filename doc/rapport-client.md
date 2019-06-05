@@ -30,7 +30,7 @@ Dans le cadre de la mise en place de l'infrastructure réseau de l'entreprise Wo
 Il est demandé d'offrir l'accès Internet sur les postes de travail fixes et mobiles des employés tout comme l'accès aux différents services internes (comme l'ERP) sans se reposer sur le fournisseur d'accès ni les fournisseurs extérieurs.
 Concrètement, il nous est demandé d'utiliser notre propre DNS afin de ne pas dépendre du fournisseur d'accès ou fournisseur extérieur afin d'accéder à Internet et aux différents services internes (comme l'ERP).
 
-Un contrôle de traffic Web généré par les employés est une préférence.
+Un contrôle de trafic Web généré par les employés est une préférence.
 
 Il y a un certain intérêt pour la gestion des identités des employés pour l'utilisation des services internes même si pas obligatoire.
 
@@ -38,15 +38,15 @@ Il y a un certain intérêt pour la gestion des identités des employés pour l'
 
 La vente des produits s'effectue avec les revendeurs via une plateforme accessible en ligne, expliqué un peu plus loin.
 
-La gestion des contacts clients, commandes, stocks et l'organisation de la prodution est basée sur un outil ERP web accessible uniquement en interne.
+La gestion des contacts clients, commandes, stocks et l'organisation de la production est basée sur un outil ERP web accessible uniquement en interne.
 Il s'agit donc d'un Intranet, accessible *uniquement* dans l'enceinte du réseau de l'entreprise.
 
 La différence entre le site internet pour les revendeurs et l'outil ERP est que l'outil ERP n'est disponible qu'en interne et uniquement que par les employés de l'entreprise WoodyToys alors que le site pour les revendeurs est accessible publiquement et ne donne accès qu'à un catalogue et un moyen de commande.
 L'outil ERP permet donc de voir, faire et gérer bien plus de choses que le site pour les revendeurs.
 
-Un portail Web présentant les produits (www.woodytoys.be) et un site de vente en ligne réservé aux revendeurs (b2b.woodytoys.be) sont disponible publiquement.
+Un portail Web présentant les produits (www.woodytoys.be) et un site de vente en ligne réservé aux revendeurs (b2b.woodytoys.be) sont disponibles publiquement.
 
-**Le code source des 3 sites est pré-existant :**
+**Le code source des 3 sites est préexistant :**
 
 - Le site vitrine est un site statique en HTML/CSS,
 - Le site de vente en ligne pour les revendeurs (b2b) et l'ERP (intranet) sont des sites dynamiques en PHP/MySQL.
@@ -100,9 +100,9 @@ Au vu des besoins du client, ce projet sera divisé en plusieurs parties :
 - Le client demande à intégrer un DNS (un ou plusieurs serveurs) avec la gestion des noms de domaines ainsi que des zones.
 - Il est demandé de mettre en place 3 sites web avec une intégration d'une base de données :
   - Un premier site web statique pour présenter l'entreprise,
-  - Deux autres sites, dynamique tout deux, pour la partie vente en ligne pour les revendeurs ainsi que l'ERP.
+  - Deux autres sites, dynamique tous deux, pour la partie vente en ligne pour les revendeurs ainsi que l'ERP.
 - La création d'un serveur mail permettant la gestion des envois et réception, une consultation via client mail et ce, de n'importe où.
-  - Ce serveur mail doit héberger le nom de domaine de l'entreprise et notamment gérer les éventuels redirections.
+  - Ce serveur mail doit héberger le nom de domaine de l'entreprise et notamment gérer les éventuelles redirections.
   - Il stockera les mails envoyés et reçus.
 
 ## 3.1. DNS et accès web interne
@@ -121,7 +121,7 @@ Nous avons choisi `lighttpd` pour les performances qu'il offre en comparaison d'
 `Lighttpd` est un serveur web sécurisé, rapide et flexible qui a été optimisé pour des environnements à hautes performance.
 Il a une très faible empreinte mémoire en comparaison d'autres serveurs web et tient compte de la charge du processeur.
 
-Les sites sont accessible en ligne sur notre plateforme de test `51.77.203.41` aux adresses suivantes :
+Les sites sont accessibles en ligne sur notre plateforme de test `51.77.203.41` aux adresses suivantes :
 
 - [www.wt13.ephec-ti.be](www.wt13.ephec-ti.be)
 - [b2b.wt13.ephec-ti.be](b2b.wt13.ephec-ti.be)
@@ -133,7 +133,7 @@ Afin de protéger au mieux les sites internet, un certificat menant au protocole
 
 Pour ce faire, `Let's Encrypt` est notre choix retenu étant donné que les certificats auto-signés sont difficile à renouveler aisément.
 
-`Let's Encrypt` est une autorité de certifciation gratuite, automatisée, et fourni par le Internet Security Research Group (ISRG).
+`Let's Encrypt` est une autorité de certification gratuite, automatisée, et fourni par le Internet Security Research Group (ISRG).
 Les principes clés de Let's Encrypt sont :
 
 - Gratuit : toute personne possédant un nom de domaine peut utiliser Let's Encrypt pour obtenir un certificat de confiance, sans frais,
@@ -147,12 +147,12 @@ Les principes clés de Let's Encrypt sont :
 
 Concernant la partie mail, nous utilisons `Postfix`, étant donné qu'il s'agit du système de server mail répandu et bien connu de tous.
 
-`Postfix` n'est certes pas dès plus récents mais on profite, tout comme pour Bind9, d'une documentation complète.
+`Postfix` n'est certes pas des plus récents mais on profite, tout comme pour Bind9, d'une documentation complète.
 
 ## 3.4. VoIP
 
 Nous utilisons `Asterisk` comme moyen de communication en Voice over IP.
-Il est fort répandu mais nous profitons du documentation minimale.
+Il est fort répandu mais nous profitons d'une documentation minimale.
 Heureusement, de nombreux utilisateurs proposent du contenu pour mieux comprendre son utilisation.
 
 D'autres systèmes ont retenu notre attention comme _Dimelo (a RingCentral Company)_ ou _Skype Connect_ qui malheureusement sont payant et ne correspondent pas totalement à ce que nous recherchons.
@@ -167,7 +167,7 @@ _Dimelo_ semble être dans le même principe même s'il propose.
 
 ### 4.1.2. Web
 
-**Apache**_ fournit une variété de modules MPM (MultiProcessing Modules) qui lui permet de s'exécuter en mode process-based, hybride (processus et thread) ou hybride évenementiel.
+**Apache**_ fournit une variété de modules MPM (MultiProcessing Modules) qui lui permet de s'exécuter en mode process-based, hybride (processus et thread) ou hybride évènementiel.
 Apache est conçu pour réduire les temps de latence tout en augmentant le débit par rapport au traitement d'un grand nombre de demandes (garantie d'un traitement cohérent et fiable des demandes dans un délai raisonnable.
 Il s'agirait du serveur web (tout confondu) le plus utilisé dans le monde.
 
@@ -188,7 +188,7 @@ Il s'agirait du deuxième serveur web open source et du troisième serveur web (
 | **Lighttpd**      | Oui                   | Oui, *BSD License 2.0*        | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Oui     | Oui           | Oui  | Oui    |
 | **Nginx**         | Oui                   | Oui, *FreeBSD License*        | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Oui     | Oui           | Oui  | Oui    |
 
-Le support des systèmes d'exploitation concernent : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
+Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
 
 *Nginx: support de Windows via Cygwin.
 
@@ -223,7 +223,7 @@ Le support des systèmes d'exploitation concernent : Windows, Linux, macOS, BSD,
 
 ## 4.2. Choix et justification de la solution
 
-_**Nos choix se sont reposé sur :**_
+_**Nos choix se sont reposés sur :**_
 
 - **Web : Lighttpd**
   - **Certificat : Let's Encrypt**
@@ -242,4 +242,4 @@ De nombreux modules compatibles avec ce dernier sont également disponibles en l
 
 # 5. Besoins en maintenance
 
-# 6. Deploiement
+# 6. Déploiement

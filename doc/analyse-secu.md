@@ -158,7 +158,7 @@ Le choix de Let's Encrypt, plutôt que d'un certificat auto-signé est simple :
 - Les certificats générés sont de confiance alors que les certificats auto-signés doivent être manuellement marqué comme de confiance,
 - La génération du certificat est aisée et rapide via Let's Encrypt.
 
-![Preuve de la mise en place du certificat Let's Encrypt et de son bon fonctionnement](https://github.com/melvinmajor/VPS-project/blob/master/wiki/https.png)
+![Preuve de la mise en place du certificat Let's Encrypt et de son bon fonctionnement](../wiki/https.png)
 
 #### 2.2.2.3. Sécurisation VOIP
 

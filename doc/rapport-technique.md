@@ -58,6 +58,16 @@ Nous avons fini la mise en place du DNS et avançons de bon train sur la partie 
 Melvin à pris en charge le développement de la partie VoIP afin que nous puissions rattraper notre retard.
 Globalement parlant, les parties principales sont faites et beaucoup de choses sont presques finies; il ne reste que certains détails à finir afin d'achever DNS, Web et Mail.
 
+### 1.1.4. Bilan final (groupe entier)
+
+Nous avons su avancer de bon train et avons réussi à mettre intégralement en place les services DNS, Web, Base de données et Mail.
+Concernant le service VoIP, une partie est fonctionnelle mais au vu des soucis rencontrés, un développement supplémentaire est requi afin de le finaliser.
+
+De plus, l'intégration du certificat SSL pour le protocole HTTPS à été mis en place.
+Nous utilisons Let's Encrypt et plus précisément le certificat SAN afin de déployer un certificat sur plusieurs sites internet d'un même domaine principal.
+Malheureusement, suite à de multiples essais pendant la création, nous avons atteint la limite des certificats disponible pendant une période d'une semaine et nous devons attendre encore quelques jours avant de pouvoir en obtenir un à nouveau.
+Dans le rapport d'analyse de sécurité, une image à été incluse afin de montrer le bon fonctionnement du protocole HTTPS avant les problèmes rencontrés et cité ci-dessus.
+
 # 2. Méthodologie
 
 Nous avons commencé par lire la documentation des outils Docker et commencer quelques tests afin de pouvoir mieux comprendre son fonctionnement.
@@ -75,10 +85,10 @@ De plus, lorsque nous rencontrons un problème, nous les transmettons aux autres
 La modélisation du schéma réseau à été réalisée par Guillaume Vanden Herrewegen, tout comme le début du Wiki du [repository GitHub](https://github.com/melvinmajor/VPS-project/wiki).
 
 Hubert et Melvin sont en charge de la partie web qui est achevé.
-Guillaume est en charge de la partie DNS qui, techniquement parlant, devrait être fonctionnel mais qui ne l'est pas totalement en pratique.
+Guillaume est en charge de la partie DNS qui, techniquement parlant, devrait être fonctionnel mais qui ne l'est pas totalement en pratique (intranet).
 Guillaume est également en charge de la partie Mail qui est achevé.
 Melvin est en charge de la partie VoIP qui concrètement parlant, ne fonctionne que partiellement.
-Melvin supervisait également les modifications à faire sur les différents rapports et les modifiait souvent lui-même principalement.
+Melvin supervisait également les modifications à faire sur les différents rapports.
 
 # 4. Schéma réseau et justification des choix
 
@@ -247,7 +257,7 @@ Le problème n'ayant pas été découvert et fixé, Hubert à repris de zéro la
 
 Suite à quelques tests et modifications des sites internet, nous avons compilé à plusieurs reprises notre Docker concernant la partie web.
 Etant donné que nous avons intégré la génération d'une clé Let's Encrypt au sein même de la compilation du Docker, il s'avère que la clé est renouvelée à chaque compilation.
-Cela à donc, par conséquent, entraîné le fait que nous ayons atteint le nombre limites de certificats pouvant être générés auprès de Let's Encrypt.
+Cela à donc, par conséquent, entraîné le fait que nous ayons atteint le nombre limite de certificats pouvant être générés auprès de Let's Encrypt.
 
 D'après la documentation de Let's Encrypt, il s'avère qu'un délai de une semaine environ est prévu avant de pouvoir à nouveau en générer.
 Le système de "fenêtre coulissante" est utilisé par Let's Encrypt.

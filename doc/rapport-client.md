@@ -74,7 +74,7 @@ Les communications identifiées sont les suivantes :
 - _**Ouvriers :**_ un poste de téléphonie IP dans l'atelier et dans le hangar pour joindre les autres départements internes.
 - _**Secrétaire :**_ dispose d'un PC sur lequel se trouve un softphone permettant de contacter n'importe qui.
 - _**Service comptabilité :**_ numéro unique permettant de joindre le premier comptable disponible et un numéro spécifique par bureau (le service est réparti en 2 bureaux). Ils peuvent joindre l'extérieur et tout le monde en interne à l'exception du directeur.
-- _**Commerciaux :**_ réunis dans un bureau, ils peuvent joindre l'extérieur et tout le monde n interne à l'exception du directeur. Ils disposent de smartphones avec lesquels ils peuvent téléphoner en déplacement.
+- _**Commerciaux :**_ réunis dans un bureau, ils peuvent joindre l'extérieur et tout le monde en interne à l'exception du directeur. Ils disposent de smartphones avec lesquels ils peuvent téléphoner en déplacement.
 - _**Direction :**_ il dispose d'un numéro qui peut joindre n'importe quel poste en interne et l'extérieur. Il ne peut être joint directement (les appels transitent d'abord auprès de la secrétaire).
 
 Tous les employés disposeront d'une boite vocale.
@@ -104,6 +104,8 @@ Au vu des besoins du client, ce projet sera divisé en plusieurs parties :
 - La création d'un serveur mail permettant la gestion des envois et réception, une consultation via client mail et ce, de n'importe où.
   - Ce serveur mail doit héberger le nom de domaine de l'entreprise et notamment gérer les éventuelles redirections.
   - Il stockera les mails envoyés et reçus.
+- La mise en place d'un système de téléphonie sur IP (Voice-Over IP) :
+  - Une série de compte est à créer ainsi que des spécifications précises concernant la prise de contact avec la direction à rediriger vers le secrétariat lorsque le service comptabilité et les commerciaux veulent joindre le directeur.
 
 ## 3.1. DNS et accès web interne
 
@@ -189,25 +191,51 @@ _**Nginx**_ s'agit d'un serveur web, reverse proxy, load balancer, proxy mail et
 Nginx utilise une approche événementielle asynchrone au lieu de threads afin de traiter les requêtes et fournir des performances plus prévisibles sous des charges élevées.
 Il s'agirait du deuxième serveur web open source et du troisième serveur web (tout confondu) le plus utilisé dans le monde.
 
-| Nom | Gratuit d'utilisation | Open Source | Système d'exploitation supporté | Configuration | Modules | SSL/TLS HTTPS | IPv6 | HTTP/2 |
-|-----|-----------------------|-------------|---------------------------------|---------------|---------|---------------|------|--------|
-| **Apache** | Oui | Oui, *Apache License 2.0* | Tous | Aisée | Oui | Oui | Oui | Oui |
-| **Microsoft IIS** | Oui | Non, *Shareware / Windows NT* | Windows | Complexe | Oui | Oui | Oui | Oui |
-| **Lighttpd** | Oui | Oui, *BSD License 2.0* | Windows, Linux, macOS, BSD, Solaris, AIX, HP-UX  | Très aisée | Oui | Oui | Oui | Oui |
-| **Nginx** | Oui | Oui, *FreeBSD License* | Windows*, Linux, macOS, BSD, Solaris, AIX, HP-UX | Aisée | Oui | Oui | Oui | Oui |
+| Nom | Gratuit d'utilisation | Open Source | OS supporté | Configuration | Modules |
+|-----|-----------------------|-------------|-------------|---------------|---------|
+| **Apache** | Oui | Oui, *Apache License 2.0* | Tous | Aisée | Oui |
+| **Microsoft IIS** | Oui | Non, *Shareware / Windows NT* | Windows | Complexe | Oui |
+| **Lighttpd** | Oui | Oui, *BSD License 2.0* | Windows, Linux, macOS, BSD  | Très aisée | Oui |
+| **Nginx** | Oui | Oui, *FreeBSD License* | Windows*, Linux, macOS, BSD | Aisée | Oui |
 
-Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD, Solaris, eComStation, OpenVMS, AIX, IBM i, z/OS et HP-UX.
+Le support des systèmes d'exploitation concernant : Windows, Linux, macOS, BSD, etc.
 
 *Nginx: support de Windows via Cygwin.
 
 #### 4.1.2.1. Certificats SSL
 
-| Nom | Processus | Coût | Validation | Confiance | Certificat génériques | Certificat uniquement IP | Période d'expiration |
-|-----|-----------|------|------------|-----------|-----------------------|--------------------------|----------------------|
-| **Autorité de certification commerciale** | manuel (configuration initiale et renouvellement) | Entre 10$ et 1000$ | DV, OV, EV | Approuvé par défaut | Oui | Certains pour adresses IP publiques | 1 à 3 ans |
-| **Let's Encrypt** | automatique (renouvellement et installation initiale) | gratuit | DV | approuvé par défaut | Oui | Non | 90 jours |
-| **Certificat auto-signé** | manuelle (création certificat uniquement) | gratuit | DV, OV | aucun par défaut, doit être manuellement marqué comme de confiance (aucun AC commun impliqué) | Oui | Oui, toute propriété intellectuelle | n'importe lequel |
-| **Autorité de certification privé** | manuel (création de certificat, renouvellement et configuration de l'autorité de certification) | gratuit | DV, OV | aucun par défaut, distribution manuelle | Oui | Oui, toute propriété intellectuelle | n'importe lequel |
+- **Autorité de certification commerciale :**
+  - Processus: Manuel 
+  - Coût : Entre 10$ et 1000$
+  - Validation : DV, OV, EV
+  - Confiance : Approuvé par défaut
+  - Certificat générique : Oui
+  - Certificat uniquement IP : Certains pour adresses IP publiques
+  - Période de validité : 1 à 3 ans
+- **Let's Encrypt :**
+  - Processus : Automatique
+  - Coût : Gratuit
+  - Validation : DV
+  - Confiance : Approuvé par défaut
+  - Certificat générique : Oui
+  - Certificat uniquement IP : Non
+  - Période de validité : 90 jours
+- **Certificat auto-signé :**
+  - Processus : Manuelle (création de certificat uniquement)
+  - Coût : Gratuit
+  - Validation : DV, OV
+  - Confiance : Aucun par défaut, doit être manuellement marqué comme de confiance (aucun AC commun impliqué)
+  - Certificat générique : Oui
+  - Certificat uniquement IP : Oui, toute propriété intellectuelle
+  - Période de validité : n'importe lequel
+- **Autorité de certification privé :**
+  - Processus : Manuel
+  - Coût : Gratuit
+  - Validation : DV, OV
+  - Confiance : Aucun par défaut, distribution manuelle
+  - Certificat générique : Oui
+  - Certificat uniquement IP : Oui, toute propriété intellectuelle
+  - Période de validité : N'importe lequel
 
 - CA : Autorité de Certification
 - DV : Domaine de Validation
